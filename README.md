@@ -24,7 +24,7 @@ git clone https://github.com/zerosheepmoo/pep8-in-korean.git
 
 > vscode 기준입니다.
 
-- 소스 트리를 들어가신 후, + 버튼을 눌러주세요!
+- 소스 컨트롤로 들어가신 후, + 버튼을 눌러주세요!
 - cli 로 `git add` 로 하셔도 상관없습니다.
 
 ![add](docguide/img/git-add.png)
