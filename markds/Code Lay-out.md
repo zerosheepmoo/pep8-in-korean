@@ -2,14 +2,14 @@
 
 ## 들여쓰기
 
-들여쓰기는 각 단계마다 4개의 스페이스로 한다.
+각 들여쓰기 레벨마다 4칸 공백을 사용한다.
 
-여러 줄에 이어지는 문장은 해당 문장에 속해있는 요소들을 소괄호, 대괄호 그리고 중괄호 내에서 
-파이썬의 암시적인 문장 방식(implicit line)을 사용하여 수직적으로 정렬하거나 첫 줄을 제외한 나머지 문장에 
-모두 들여쓰기를 하는 방법인 내어쓰기(*hanging indent*[^7])을 사용하여 정렬해야 한다. 
-특히, 내어쓰기 방식을 사용할 때는 다음의 것들을 반드시 고려해야 한다; 첫 번째 문장에는 전달 인자가 
-없어야 하고 추가적인 들여쓰기는 여러 줄에 이어지는 문장으로써 그것 자체를 분명하게 구별하는 데에 
-사용되어야 한다::
+여러 줄에 이어지는 문장은 해당 문장에 래핑 된(wrapped) 요소들을 소괄호, 대괄호 그리고 중괄호 내에서
+파이썬의 암시적 줄 결합(implicit line joining)을 사용하여 세로로 정렬해야 하거나,
+*내어쓰기(hanging indent)*[^7]를 사용하여 정렬해야 한다.
+특히, 내어쓰기를 사용할 때는 다음 사항들을 고려해야 한다. 첫 번째 문장에는 아규먼트가
+없어야 한다. 그리고 추가적인 들여쓰기는 여러 줄에 이어지는 문장으로서 그 자체를 분명하게 구별하는 데에
+사용되어야 한다.
 
 ```python
 # 올바른 문장:
@@ -29,7 +29,9 @@ foo = long_function_name(
     var_one, var_two,
     var_three, var_four)
 ```
+
 ::
+
 ```python
 # 잘못된 문장:
 
@@ -47,6 +49,7 @@ def long_function_name(
 들여쓰기 시 스페이스를 4번 사용하는 규칙은 여러 줄에 이어지는 문장에 선택적으로 적용된다.
 
 선택적인 경우::
+
 ```python
 # 내어쓰기는 4개의 스페이스 외의 방식으로 들여쓰기가 *될 수 있다*(여기서는 2개의 스페이스 방식이 사용되었다).
 foo = long_function_name(
@@ -54,16 +57,17 @@ foo = long_function_name(
   var_three, var_four)
 ```
 
-.. _`if 조건문에서의 여러 줄에 이어지는 문장`:
+`if 조건문에서의 여러 줄에 이어지는 문장`
 
-``if`` 조건문의 조건 부분이 충분히 여러 라인에 걸쳐 쓰여질 필요가 있을 때,
-두 문자 키워드의 결합(즉 ``if``) 뒤에 한 개의 스페이스와 여는 괄호를 추가하는 것이
-여러 줄로 적힌 조건 부분을 뒤따르는 문장들처럼 4개의 스페이스로 들여쓰기 된 자연스러운 문장을 만들 수 
-있다는 것에 주목해야 한다. 이는 ``if`` 조건문 내에 중첩되어 있는 적절히 들여쓰기 된, 자연스럽게 4개의 
-스페이스로 들여쓰기 된, 코드와 시각적인 충돌을 생기게 할 수 있다. 이 PEP 문서에서는 ``if`` 조건문 내에
-중첩되어 있는 문장으로부터 이러한 조건 부분에 대해 시각적으로 어떻게 추가적인 구별을 할 것인지(또는 구별을 
-할 것인지 하지 않을 것인지)에 대한 명백한 입장이 없다. 이 상황에서 받아들일 수 있는 선택을 포함하되, 
-제한을 두지는 않을 것이다::
+When the conditional part of an if-statement is long enough to require that it be written across multiple lines, it's worth noting that the combination of a two character keyword (i.e. if), plus a single space, plus an opening parenthesis creates a natural 4-space indent for the subsequent lines of the multiline conditional. This can produce a visual conflict with the indented suite of code nested inside the if-statement, which would also naturally be indented to 4 spaces. This PEP takes no explicit position on how (or whether) to further visually distinguish such conditional lines from the nested suite inside the if-statement. Acceptable options in this situation include, but are not limited to:
+
+`if` 조건문의 조건 부분이 충분히 여러 줄로 쓰여질 필요가 있을 때,
+두 문자 키워드의 결합(즉 `if`) 뒤에 한 개의 공백과 여는 소괄호를 추가하는 것이 나머지
+여러 줄로 적힌 조건 부분을 위한 4칸 공백 들여쓰기 된 자연스러운 문장을 만들 수
+있다는 것에 주목해야 한다. 이는 `if` 조건문 내에 중첩되어 있는 적절히 들여쓰기 된, 즉 자연스럽게 4개의 스페이스로 들여쓰기 된 코드 모음과 시각적으로 충돌을 일으킬 수 있다. 이 PEP 문서에서는 `if` 조건문 내에
+중첩되어 있는 문장으로부터 이러한 조건 부분에 대해 시각적으로 어떻게 추가적인 구별을 할 것인지(또는 구별을
+할 것인지 하지 않을 것인지)에 대한 명백한 입장이 없다. 이 상황에서 혀용가능한 선택을 포함하되,
+제한을 두지는 않을 것이다.
 
 ```python
 # 추가적인 들여쓰기를 하지 않은 경우
@@ -82,11 +86,13 @@ if (this_is_one_thing
         and that_is_another_thing):
     do_something()
 ```
+
 (또한 이항 연산자들 이전 또는 이후에 띄어쓰기를 할 것인지 안할 것인지에 대한 논의를
 이후의 챕터에서 확인할 수 있다.)
 
 여러 줄이 이어지는 구조에 인접한 중괄호/대괄호/소괄호는 리스트의 마지막 문장의 여백이 아닌
 첫 번째 문자 아래 한쪽으로 정렬될 것이다, 다음의 예시처럼::
+
 ```python
 my_list = [
     1, 2, 3,
@@ -99,6 +105,7 @@ result = some_function_that_takes_arguments(
 ```
 
 또는 여러 줄이 이어지는 구조가 시작하는 문장의 첫 번째 문자 아래로 정렬될 수도 있다, 다음의 예시처럼::
+
 ```python
 my_list = [
     1, 2, 3,
@@ -163,11 +170,13 @@ for line continuation.
 Backslashes may still be appropriate at times.  For example, long,
 multiple ``with``-statements cannot use implicit continuation, so
 backslashes are acceptable::
+
 ```python
 with open('/path/to/some/file/you/want/to/read') as file_1, \
      open('/path/to/some/file/being/written', 'w') as file_2:
     file_2.write(file_1.read())
 ```
+
 (See the previous discussion on `multiline if-statements`_ for further
 thoughts on the indentation of such multiline ``with``-statements.)
 
@@ -183,6 +192,7 @@ scattered across different columns on the screen, and each operator is
 moved away from its operand and onto the previous line.  Here, the eye
 has to do extra work to tell which items are added and which are
 subtracted::
+
 ```python
 # Wrong:
 # operators sit far away from their operands
@@ -192,6 +202,7 @@ income = (gross_wages +
           ira_deduction -
           student_loan_interest)
 ```
+
 To solve this readability problem, mathematicians and their publishers
 follow the opposite convention.  Donald Knuth explains the traditional
 rule in his *Computers and Typesetting* series: "Although formulas
@@ -200,6 +211,7 @@ displayed formulas always break before binary operations" [3]_.
 
 Following the tradition from mathematics usually results in more
 readable code::
+
 ```python
 # Correct:
 # easy to match operators with operands
@@ -209,6 +221,7 @@ income = (gross_wages
           - ira_deduction
           - student_loan_interest)
 ```
+
 In Python code, it is permissible to break before or after a binary
 operator, as long as the convention is consistent locally.  For new
 code Knuth's style is suggested.
@@ -264,22 +277,27 @@ similar policy.
 ## Imports
 
 - Imports should usually be on separate lines::
+
 ```python
 # Correct:
 import os
 import sys
 ```
+
   ::
+
 ```python
 # Wrong:
 import sys, os
 ```
 
   It's okay to say this though::
+
 ```python
 # Correct:
 from subprocess import Popen, PIPE
 ```
+
 - Imports are always put at the top of the file, just after any module
   comments and docstrings, and before module globals and constants.
 
@@ -295,18 +313,22 @@ from subprocess import Popen, PIPE
   and tend to be better behaved (or at least give better error
   messages) if the import system is incorrectly configured (such as
   when a directory inside a package ends up on ``sys.path``)::
+
 ```python
 import mypkg.sibling
 from mypkg import sibling
 from mypkg.sibling import example
 ```
+
   However, explicit relative imports are an acceptable alternative to
   absolute imports, especially when dealing with complex package layouts
   where using absolute imports would be unnecessarily verbose::
+
 ```python
 from . import sibling
 from .sibling import example
 ```
+
   Standard library code should avoid complex package layouts and always
   use absolute imports.
 
@@ -315,15 +337,19 @@ from .sibling import example
 
 - When importing a class from a class-containing module, it's usually
   okay to spell this::
+
 ```python
 from myclass import MyClass
 from foo.bar.yourclass import YourClass
 ```
+
   If this spelling causes local name clashes, then spell them explicitly::
+
 ```python
 import myclass
 import foo.bar.yourclass
 ```
+
   and use "myclass.MyClass" and "foo.bar.yourclass.YourClass".
 
 - Wildcard imports (``from <module> import *``) should be avoided, as
@@ -346,6 +372,7 @@ etc. should be placed after the module docstring but before any import
 statements *except* ``from __future__`` imports.  Python mandates that
 future-imports must appear in the module before any other code except
 docstrings::
+
 ```python
 """This is the example module.
 

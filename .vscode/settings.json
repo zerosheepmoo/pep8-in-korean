@@ -1,0 +1,6 @@
+{
+    // 저장시 마크다운 린트하기
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true
+    }
+}
