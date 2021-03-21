@@ -1,16 +1,20 @@
-# 어리석은 일관성은 좁은 정신에서 나오는 허깨비 같은 것이다.
+# 초보 코더는 어리석은 일관성이 따라붙는다
 
-One of Guido's key insights is that code is read much more often than it is written. The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Python code. As [PEP 20](https://www.python.org/dev/peps/pep-0020/) says, "Readability counts".
+Guido의 핵심 인사이트 중 하나는 코드는 쓰여진 것보다 훨씬 더 많이 읽힌다는 것이다. 여기서 주어진 가이드는 코드의 가독성을 향상시키고,
+광범위한 파이썬 코드 스펙트럼에서 일관성을 갖도록 하기 위함이다.
+[PEP 20](https://www.python.org/dev/peps/pep-0020/)에서 말했듯이 "읽을 수 있는 능력은"은 중요하다.
 
-A style guide is about consistency. Consistency with this style guide is important. Consistency within a project is more important. Consistency within one module or function is the most important.
+스타일 가이드란 일관성에 관한 것이다. 그리고 이 스타일 가이드와의 일관성이 중요하다. 프로젝트 내에선 일관성이 더 중요해지고,
+한 모듈 또는 함수에서는 일관성이 가장 중요해진다.
 
-However, know when to be inconsistent -- sometimes style guide recommendations just aren't applicable. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don't hesitate to ask!
+가끔 스타일 가이드 권장 사항이 적용되지 않아 스타일의 일관성이 없어 의심스러울 때는 다른 예시들을 보고 무엇이 최선인지 판단 하도록 하자.
+그리고 질문을 망설이지도 말자!
 
-In particular: do not break backwards compatibility just to comply with this PEP!
+특히, 무작정 PEP을 준수하기 위해 하위 호환성(backwards compatibility)를 깨지 말도록 하자!
 
-Some other good reasons to ignore a particular guideline:
+스타일 가이드를 무시할 수 있는 경우들
 
-When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this PEP.
-To be consistent with surrounding code that also breaks it (maybe for historic reasons) -- although this is also an opportunity to clean up someone else's mess (in true XP style).
-Because the code in question predates the introduction of the guideline and there is no other reason to be modifying that code.
-When the code needs to remain compatible with older versions of Python that don't support the feature recommended by the style guide.
+1. 가이드를 적용해서 이 PEP을 준수하는 코드를 읽는데 익숙한 사람이라도 코드를 읽기 어려워지는 경우가 생길 때.
+2. (진정한 XP 스타일인) 다른이의 지저분한 코드를 정리하더라도 그 주변을 구성하고 있는 코드들이 망가질 경우. (아마 역사적인 이유)
+3. 문제의 코드가 가이드 라인 도입 이전에 작성되었고, 딱히 수정할 이유가 없는 경우.
+4. 코드와 스타일 가이드가 권장하는 지침을 지원하지 않는 이전 버전의 Python 이 호환되어야 하는 경우.
