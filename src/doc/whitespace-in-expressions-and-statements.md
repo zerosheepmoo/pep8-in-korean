@@ -1,53 +1,50 @@
-# Whitespace in Expressions and Statements
+# 표현과 문장에서의 공백
 
-## Pet Peeves
+## 짜증나는 녀석
 
-Avoid extraneous whitespace in the following situations:
+다음 상황에서는 불필요한 공백을 피하기
 
-- Immediately inside parentheses, brackets or braces
-
+- 괄호들 바로(Immediately) 안쪽
+  
 ```python
-# Correct:
+# 올바른 예:
 spam(ham[1], {eggs: 2})
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 spam( ham[ 1 ], { eggs: 2 } )
 ```
 
-- Between a trailing comma and a following close parenthesis
+- 트레일링(trailing) 콤마와 닫는 소괄호 사이
 
 ```python
-# Correct:
+# 올바른 예:
 foo = (0,)
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 bar = (0, )
 ```
 
-- Immediately before a comma, semicolon, or colon
+- 콤마, 세미콜론, 그리고 콜론 바로 전
 
 ```python
-# Correct:
+# 올바른 예:
 if x == 4: print x, y; x, y = y, x
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 if x == 4 : print x , y ; x , y = y , x
 ```
 
-- However, in a slice the colon acts like a binary operator, and
-  should have equal amounts on either side (treating it as the
-  operator with the lowest priority).  In an extended slice, both
-  colons must have the same amount of spacing applied.  Exception:
-  when a slice parameter is omitted, the space is omitted
+- 하지만, 슬라이스에서 콜론은 이항 연산자처럼 작동하며 양쪽에 동일한 양의 공백이 있어야한다. (가장 낮은 우선 순위의 연산자처럼 다루기)
+  확장 된 슬라이스에선 두 개의 콜론 모두 동일한 양의 공백이 적용되야 한다. 단, 슬라이스 파라미터 가 생랼 될 때에는 공백은 생략한다.
 
 ```python
-# Correct:
+# 올바른 예:
 ham[1:9], ham[1:9:3], ham[:9:3], ham[1::3], ham[1:9:]
 ham[lower:upper], ham[lower:upper:], ham[lower::step]
 ham[lower+offset : upper+offset]
@@ -56,78 +53,70 @@ ham[lower + offset : upper + offset]
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 ham[lower + offset:upper + offset]
 ham[1: 9], ham[1 :9], ham[1:9 :3]
 ham[lower : : upper]
 ham[ : upper]
 ```
 
-- Immediately before the open parenthesis that starts the argument
-  list of a function call
+- 함수 호출의 아규먼트 나열로 시작하는 여는 소괄호 바로 전
 
 ```python
-# Correct:
+# 올바른 예:
 spam(1)
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 spam (1)
 ```
 
-- Immediately before the open parenthesis that starts an indexing or
-  slicing
+- 인덱싱 또는 슬라이싱으로 시작하는 여는 괄호 바로 전
 
 ```python
-# Correct:
+# 올바른 예:
 dct['key'] = lst[index]
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 dct ['key'] = lst [index]
 ```
 
-- More than one space around an assignment (or other) operator to
-  align it with another
+- 두개 이상의 공백으로 할당 (또는 다른) 연산자를 둘러싸 정렬 하는 경우
 
 ```python
-# Correct:
+# 올바른 예:
 x = 1
 y = 2
 long_variable = 3
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 x             = 1
 y             = 2
 long_variable = 3
 ```
 
-## Other Recommendations
+## 다른 권장사항
 
-- Avoid trailing whitespace anywhere.  Because it's usually invisible,
-  it can be confusing: e.g. a backslash followed by a space and a
-  newline does not count as a line continuation marker.  Some editors
-  don't preserve it and many projects (like CPython itself) have
-  pre-commit hooks that reject it.
+- 어디든지 트레일링 공백을 피하자. 주로 눈에 띄지도 않고 혼란스럽기 때문인데,
+  예를 들면, 백슬래쉬 뒤에 공백과 개행이 오는 것은 줄 연속 마커로 간주되지 않는다.
+  몇 에디터는 이를 저장하지(preserve) 않으며,
+  (CPython 과 같은) 많은 프로젝트에는 이를 거부하는 사전커밋 훅(pre-commit hook)이 있다.
 
-- Always surround these binary operators with a single space on either
-  side: assignment (``=``), augmented assignment (``+=``, ``-=``
-  etc.), comparisons (``==``, ``<``, ``>``, ``!=``, ``<>``, ``<=``,
-  ``>=``, ``in``, ``not in``, ``is``, ``is not``), Booleans (``and``,
-  ``or``, ``not``).
+- 항상 이항 연사자들 주위에는 항상 공백 한 칸으로 둘러싸야 한다.
+  예) 할당 (`=`), 증강 할당(`+=`, `-=`, 등),
+  비교(`==`, `<`, `>`, `!=`, `<>`, `<=`, `>=`, `in`, `is not`),
+  불린(`and`, `or`, `not`)
 
-- If operators with different priorities are used, consider adding
-  whitespace around the operators with the lowest priority(ies). Use
-  your own judgment; however, never use more than one space, and
-  always have the same amount of whitespace on both sides of a binary
-  operator
+- 만약 다른 우선 순위의 연산자들이 사용될 경우, 가장 낮은 우선 순위(들)의 연산자 주위에 공백을 더하는 것을 고려하자.
+  각자에 판단에 맡긴다. 하지만 하나보다 많은 공백을 사용하지 말자. 그리고 이항 연산자의 양쪽에는 항상 같은 양의 공백을 두어야한다.
 
 ```python
-# Correct:
+# 올바른 예:
 i = i + 1
 submitted += 1
 x = x*2 - 1
@@ -136,7 +125,7 @@ c = (a+b) * (a-b)
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 i=i+1
 submitted +=1
 x = x * 2 - 1
@@ -144,58 +133,53 @@ hypot2 = x * x + y * y
 c = (a + b) * (a - b)
 ```
 
-- Function annotations should use the normal rules for colons and
-  always have spaces around the ``->`` arrow if present.  (See
-  `Function Annotations`_ below for more about function annotations.)::
+- 함수 어노테이션은 콜론의 일반적인 규칙을 따르며, `->` 화살표로 표현할 경우 항상 앞 뒤로 공백을 넣어야 한다. ([함수 어노테이션](./programming-recommendations.md#function-annotations)
+  을 참고하기)
 
 ```python
-# Correct:
+# 올바른 예:
 def munge(input: AnyStr): ...
 def munge() -> PosInt: ...
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 def munge(input:AnyStr): ...
 def munge()->PosInt: ...
 ```
 
-- Don't use spaces around the ``=`` sign when used to indicate a
-  keyword argument, or when used to indicate a default value for an
-  *unannotated* function parameter::
+- `=` 가 키워드 아규먼트를 가리키거나, *어노테이트 되지 않은* 함수의 파라미터의 디폴트 값을 가리키는 경우, 그 주위에 공백을 사용하지 말기.
 
 ```python
-# Correct:
+# 올바른 예:
 def complex(real, imag=0.0):
     return magic(r=real, i=imag)
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 def complex(real, imag = 0.0):
     return magic(r = real, i = imag)
 ```
 
-- When combining an argument annotation with a default value, however, do use
-  spaces around the ``=`` sign
+- 하지만 아규먼트 어노테이션이 디폴트 값과 결합할 때, `=` 주위로는 공백을 사용하기.
 
 ```python
-# Correct:
+# 올바른 예:
 def munge(sep: AnyStr = None): ...
 def munge(input: AnyStr, sep: AnyStr = None, limit=1000): ...
 ```
 
 ```python
-# Wrong:
+# 잘못된 예:
 def munge(input: AnyStr=None): ...
 def munge(input: AnyStr, limit = 1000): ...
 ```
 
-- Compound statements (multiple statements on the same line) are
-  generally discouraged
+- 복합문(같은 줄에 여러 문장이 있는 경우)은 주로 권장하지 않는다.
 
 ```python
-# Correct:
+# 올바른 예:
 if foo == 'blah':
     do_blah_thing()
 do_one()
@@ -203,31 +187,30 @@ do_two()
 do_three()
 ```
 
-- Rather not
-
+- 즉, 다음은 하지말기
+  
 ```python
-# Wrong:
+# 잘못된 예:
 if foo == 'blah': do_blah_thing()
 do_one(); do_two(); do_three()
 ```
 
-- While sometimes it's okay to put an if/for/while with a small body
-  on the same line, never do this for multi-clause statements.  Also
-  avoid folding such long lines!
+- 때로는 같은 줄에 작은 본문으로 if / for / while을 넣는 것이 좋지만,
+  다중 절 문(multi-clause statements)에 대해서는 하지 말기. 또한 긴줄을 폴딩(folding)하지 말기.
 
-  Rather not
+  다음은 하지말기.
 
 ```python
-# Wrong:
+# 잘못된 예:
 if foo == 'blah': do_blah_thing()
 for x in lst: total += x
 while t < 10: t = delay()
 ```
 
-- Definitely not::
+- 절대로 다음은 하지말기.
 
 ```python
-# Wrong:
+# 잘못된 예:
 if foo == 'blah': do_blah_thing()
 else: do_non_blah_thing()
 
