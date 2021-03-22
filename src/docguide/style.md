@@ -10,6 +10,9 @@
 [markdownlint rule](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
 을 따른다.
 
+파일명은 Header명을 그대로 따르는 것을 원칙으로, lowercase 로 작성한다.
+또, 공백은 `-` 로 replace 한다.
+
 우리의 세 목표:
 
 1. **적절한 마크다운 문법**를 쓰자.
