@@ -5,26 +5,26 @@
 각 들여쓰기 레벨마다 4칸 공백을 사용한다.
 
 여러 줄에 이어지는 문장은 해당 문장에 래핑 된(wrapped) 요소들을 소괄호, 대괄호 그리고 중괄호 내에서
-파이썬의 암시적 줄 결합(implicit line joining)을 사용하여 세로로 정렬해야 하거나,
+파이썬의 암시적 줄 결합(implicit line joining)을 사용하여 세로줄을 맞추어야 하거나,
 *내어쓰기(hanging indent)*[^7]를 사용하여 정렬해야 한다.
 특히, 내어쓰기를 사용할 때는 다음 사항들을 고려해야 한다. 첫 번째 문장에는 아규먼트가
 없어야 한다. 그리고 추가적인 들여쓰기는 여러 줄에 이어지는 문장으로서 그 자체를 분명하게 구별하는 데에
 사용되어야 한다.
 
 ```python
-# 올바른 문장:
+# 올바른 예:
 
 # 여는 구분 문자(여기서는 소괄호)를 기준으로 정렬된다.
 foo = long_function_name(var_one, var_two,
                          var_three, var_four)
 
-# 나머지 문장으로부터 함수의 매개변수를 구별하기 위해 매개변수에 4개의 스페이스(추가적인 들여쓰기)를 더한다.
+# 함수의 아규먼트를 제외한 나머지와 아규먼트를 구분하기 위해 4개 공백(추가적인 들여쓰기)을 더한다.
 def long_function_name(
         var_one, var_two, var_three,
         var_four):
     print(var_one)
 
-# 내어쓰기는 요소들에 들여쓰기를 해야한다.
+# 내어쓰기는 레벨을 더해야 합니다. (역: 나머지 요소들에 들여쓰기를 한다는 의미)
 foo = long_function_name(
     var_one, var_two,
     var_three, var_four)
@@ -33,9 +33,9 @@ foo = long_function_name(
 ::
 
 ```python
-# 잘못된 문장:
+# 잘못된 예:
 
-# 수직적으로 정렬하지 않았을 때 첫번째 문장에 매개변수는 존재하지 않아야 한다.
+# 세로줄을 맞추지 않았을 때, 첫번째 문장에 아규먼트는 존재하지 않아야한다.
 foo = long_function_name(var_one, var_two,
     var_three, var_four)
 
@@ -46,12 +46,12 @@ def long_function_name(
     print(var_one)
 ```
 
-들여쓰기 시 스페이스를 4번 사용하는 규칙은 여러 줄에 이어지는 문장에 선택적으로 적용된다.
+여러 줄에 이어지는 문장에서 4칸 공백 들여쓰기 규칙은 선택 사항이다.
 
-선택적인 경우::
+선택사항:
 
 ```python
-# 내어쓰기는 4개의 스페이스 외의 방식으로 들여쓰기가 *될 수 있다*(여기서는 2개의 스페이스 방식이 사용되었다).
+# 내어쓰기는 4칸 공백 외의 방식으로 들여쓰기가 *될 수도 있다* (역: 여기서는 2칸 공백 방식이 사용되었다.)
 foo = long_function_name(
   var_one, var_two,
   var_three, var_four)
@@ -59,12 +59,11 @@ foo = long_function_name(
 
 `if 조건문에서의 여러 줄에 이어지는 문장`
 
-When the conditional part of an if-statement is long enough to require that it be written across multiple lines, it's worth noting that the combination of a two character keyword (i.e. if), plus a single space, plus an opening parenthesis creates a natural 4-space indent for the subsequent lines of the multiline conditional. This can produce a visual conflict with the indented suite of code nested inside the if-statement, which would also naturally be indented to 4 spaces. This PEP takes no explicit position on how (or whether) to further visually distinguish such conditional lines from the nested suite inside the if-statement. Acceptable options in this situation include, but are not limited to:
-
 `if` 조건문의 조건 부분이 충분히 여러 줄로 쓰여질 필요가 있을 때,
 두 문자 키워드의 결합(즉 `if`) 뒤에 한 개의 공백과 여는 소괄호를 추가하는 것이 나머지
 여러 줄로 적힌 조건 부분을 위한 4칸 공백 들여쓰기 된 자연스러운 문장을 만들 수
-있다는 것에 주목해야 한다. 이는 `if` 조건문 내에 중첩되어 있는 적절히 들여쓰기 된, 즉 자연스럽게 4개의 스페이스로 들여쓰기 된 코드 모음과 시각적으로 충돌을 일으킬 수 있다. 이 PEP 문서에서는 `if` 조건문 내에
+있다는 것에 주목해야 한다. 이는 if 조건문 내에 중첩되어 있는 적절히 들여쓰기 된,
+즉 자연스럽게 4칸 공백으로 들여쓰기 된 코드 모음과 시각적으로 충돌을 일으킬 수 있다. 이 PEP 문서에서는 `if` 조건문 내에
 중첩되어 있는 문장으로부터 이러한 조건 부분에 대해 시각적으로 어떻게 추가적인 구별을 할 것인지(또는 구별을
 할 것인지 하지 않을 것인지)에 대한 명백한 입장이 없다. 이 상황에서 혀용가능한 선택을 포함하되,
 제한을 두지는 않을 것이다.
@@ -75,10 +74,10 @@ if (this_is_one_thing and
     that_is_another_thing):
     do_something()
 
-# 문법에 강조를 해주는 에디터들에서 어느정도의 구별을 제공해줄 수 있는 주석을 추가한 경우
+# 구문 하이라이터(syntax highlighter)를 지원하는 에디터에 어느 정도의 구별을 제공해 줄 수 있는 주석을 더하기
 if (this_is_one_thing and
     that_is_another_thing):
-    # 두 조건들이 모두 참이기 때문에 아래의 문장을 실행할 수 있다.
+    # 두 조건들이 참일 때, 뭐라뭐라....
     do_something()
 
 # 조건이 여러 줄에 이어지는 문장에서 추가적인 들여쓰기를 한 경우
@@ -90,8 +89,8 @@ if (this_is_one_thing
 (또한 이항 연산자들 이전 또는 이후에 띄어쓰기를 할 것인지 안할 것인지에 대한 논의를
 이후의 챕터에서 확인할 수 있다.)
 
-여러 줄이 이어지는 구조에 인접한 중괄호/대괄호/소괄호는 리스트의 마지막 문장의 여백이 아닌
-첫 번째 문자 아래 한쪽으로 정렬될 것이다, 다음의 예시처럼::
+여러 줄이 이어지는 구조에 있는 닫는 괄호들은 다음과 같이 리스트의 마지막 줄에서 공백이 아닌
+첫 번째 문자 아래에 줄을 맞출 수 있다.
 
 ```python
 my_list = [
@@ -104,7 +103,7 @@ result = some_function_that_takes_arguments(
     )
 ```
 
-또는 여러 줄이 이어지는 구조가 시작하는 문장의 첫 번째 문자 아래로 정렬될 수도 있다, 다음의 예시처럼::
+또는 다음처럼 이어지는 구조가 시작하는 줄의 첫번째 문자 아래로 줄을 맞출 수 있다.
 
 ```python
 my_list = [
@@ -388,3 +387,5 @@ __author__ = 'Cardinal Biggles'
 import os
 import sys
 ```
+
+[^7]: Hanging indentation is a type-setting style where all the lines in a paragraph are indented except the first line. In the context of Python, the term is used to describe a style where the opening parenthesis of a parenthesized statement is the last non-whitespace character of the line, with subsequent lines being indented until the closing parenthesis.
