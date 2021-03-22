@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         text: 'Document',
-        link: '/markds/'
+        link: '/doc/'
       },
       {
         text: 'Github',
@@ -59,7 +59,7 @@ module.exports = {
           ]
         }
       ],
-      '/markds/': [
+      '/doc/': [
         {
           title: 'PEP8',
           collapsable: false,
