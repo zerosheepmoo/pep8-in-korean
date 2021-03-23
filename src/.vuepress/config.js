@@ -10,6 +10,8 @@ module.exports = {
    */
   description: description,
 
+  dest: 'build',
+
   /**
    * Extra tags to be injected to the page HTML `<head>`
    *
