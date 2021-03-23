@@ -9,7 +9,7 @@ module.exports = {
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
   description: description,
-
+  base: '/pep8-in-korean/',
   dest: 'build',
 
   /**
