@@ -63,4 +63,4 @@ npm run dev
 - 그게 아니라면 메뉴얼하게
   [markdownlint](https://github.com/DavidAnson/markdownlint)
   가 안내하는 바에 따라 cli를 사용하여 체크해주세요.
-- 자세한 내용은 [마크다운 스타일 가이드](.style.md)를 참조해주세요.
+- 자세한 내용은 [마크다운 스타일 가이드](./style.md)를 참조해주세요.
