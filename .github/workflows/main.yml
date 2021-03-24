@@ -3,7 +3,7 @@ name: build and deploy to github pages
 on:
   push:
     branches:
-      - master
+      - action-test
 
 jobs:
   deploy:
