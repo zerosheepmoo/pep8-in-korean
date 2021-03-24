@@ -2,8 +2,8 @@
 home: true
 heroImage: logo.png
 tagline: PEP8을 한국어로 번역한 문서사이트
-actionText: Quick Start →
-actionLink: /docguide/
+actionText: 둘러보기 →
+actionLink: /doc/
 features:
 - title: 깔끔하게!
   details: 가독성이 좋은 디자인을 위해 vuepress 프레임워크를 이용하여 스태틱 사이트를 생성했습니다.

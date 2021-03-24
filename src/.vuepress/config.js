@@ -54,7 +54,6 @@ module.exports = {
           title: '번역가이드',
           collapsable: false,
           children: [
-            '',
             'contribute.md',
             'style.md',
             'trans-philosophy.md'
