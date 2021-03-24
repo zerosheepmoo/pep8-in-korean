@@ -33,7 +33,7 @@ X11 라이브러리는 모든 공용 기능에 선행 X를 사용한다.
 - ``_single_leading_underscore``: 약한 "내부 사용" 지표.  
   예시로, ``from M import *`` 는 이름이 밑줄로 시작하는 개체는 가져오지 않는다.
 
-- ``single_trailing_underscore_``: 파이썬 키워드와의 충돌을 피하기 위해 관례로 사용한다. 예시로, ::
+- ``single_trailing_underscore_``: 파이썬 키워드와의 충돌을 피하기 위해 관례로 사용한다. 예시로,
 
       tkinter.Toplevel(master, class_='ClassName')
 
