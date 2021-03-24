@@ -71,6 +71,7 @@ module.exports = {
             'string-quotes.md',
             'whitespace-in-expressions-and-statements.md',
             'references.md',
+            'comments.md'
           ]
         }
       ]

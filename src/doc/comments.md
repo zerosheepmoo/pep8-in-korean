@@ -1,4 +1,8 @@
-# Comments
+# 주석
+
+Comments that contradict the code are worse than no comments.  Always
+make a priority of keeping the comments up-to-date when the code
+changes!
 
 Comments should be complete sentences.  The first word should be
 capitalized, unless it is an identifier that begins with a lower case
