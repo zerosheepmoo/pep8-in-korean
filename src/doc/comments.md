@@ -1,73 +1,79 @@
 # 주석
 
-Comments that contradict the code are worse than no comments.  Always
-make a priority of keeping the comments up-to-date when the code
-changes!
+주석은 아얘 없는 것보다 코드와 상이한 것이 더 나쁘다.
+항상 코드가 변경 될 때마다 주석을 최신 상태로 유지하는 것에
+우선순위를 두자!
 
-Comments should be complete sentences.  The first word should be
-capitalized, unless it is an identifier that begins with a lower case
-letter (never alter the case of identifiers!).
+주석은 완전한 문장으로 쓰여져야 한다.
+*(역: 영문으로 작성시)* 첫번째 글자는 대문자여야 한다.
+단, 식별자(identifier)의 경우 첫글자의 대소문자를 변경하지 말아야 한다.
 
-Block comments generally consist of one or more paragraphs built out of
-complete sentences, with each sentence ending in a period.
+블록 주석은 주로 하나 이상의 단락으로 구성된다.
+이를 구성하는 문장들은 마침표로 끝맺는다.
 
-You should use two spaces after a sentence-ending period in multi-
-sentence comments, except after the final sentence.
+여러 문장으로 된 주석들은 문장들의 마침표 뒤에 2칸 공백을 사용해야한다.
+단, 마지막 문장은 제외한다.
 
-Ensure that your comments are clear and easily understandable to other
-speakers of the language you are writing in.
+주석은 사용한 언어들이 명확해야하며,
+다른 사용자가 이해하기 쉽게 작성되어야 한다.
 
-Python coders from non-English speaking countries: please write your
-comments in English, unless you are 120% sure that the code will never
-be read by people who don't speak your language.
+비영어권 국가의 파이썬 코더들은 주석을 영어로 작성하자.
+그렇게 하지 않을 경우 당신의 언어를 사용하지 않는 사람들은 코드를 절대로 읽지 않을 것을
+120% 확실한다.
 
-## Block Comments
+## 블록 주석
 
-Block comments generally apply to some (or all) code that follows
-them, and are indented to the same level as that code.  Each line of a
-block comment starts with a ``#`` and a single space (unless it is
-indented text inside the comment).
+블록 주석은 주로 일반적으로 그 뒤에 오는 일부 (또는 전체) 코드에 적용되며,
+해당 코드와 동일한 레벨로 들여쓰기 되야한다.
+블록 코멘트의 각각의 줄은 `#` 하나와 한 칸 공백으로 시작한다.
+(단, 주석 안에서 들여쓰기 된 경우를 제외한다.)
 
-Paragraphs inside a block comment are separated by a line containing a
-single ``#``.
+블록 주석 안의 단락들은 `#` 하나를 포함할 때마다 줄로 구분된다.
 
-## Inline Comments
+## 인라인 주석
 
-Use inline comments sparingly.
+인라인 주석을 적게 사용하자.
 
-An inline comment is a comment on the same line as a statement.
-Inline comments should be separated by at least two spaces from the
-statement.  They should start with a # and a single space.
+인라인 주석은 코드의 문(statement)과 같은 줄에 있는 주석이다.
+인라인 주석은 최소 2칸 공백으로 코드의 문과 구분 되어야한다.
+그들은 `#` 과 한 칸 공백으로 시작한다.
 
-Inline comments are unnecessary and in fact distracting if they state
-the obvious.  Don't do this::
+인라인 주석은 불필요하며, 실제로 명백한 상태를 나타내면 산만해진다. 다음과 같이 하지말자.
 
-    x = x + 1                 # Increment x
+```python
+x = x + 1                 # x 를 증가시킨다.
+```
 
-But sometimes, this is useful::
+하지만 가끔은, 이런 경우 유용하다.
 
-    x = x + 1                 # Compensate for border
+```python
+x = x + 1                 # 테두리 보정
+```
 
-## Documentation Strings
+## 문서화 문자열
 
-Conventions for writing good documentation strings
-(a.k.a. "docstrings") are immortalized in PEP 257.
+좋은 문서화 문자열 (일명 "독스트링")을 작성하기위한 규칙은
+[PEP 257](https://www.python.org/dev/peps/pep-0257/)
+에서 영구화되었다.
 
-- Write docstrings for all public modules, functions, classes, and
-  methods.  Docstrings are not necessary for non-public methods, but
-  you should have a comment that describes what the method does.  This
-  comment should appear after the ``def`` line.
+- 모든 퍼블릭 모듈, 함수, 클래스, 그리고 메서드들에 대해서 독스트링을 작성하자.
+  독스트링은 퍼블릭이 아닌 메서드에서는 필수가 아니지만,
+  그 메서드가 무엇을 하는지는 설명해주어야한다.
+  이 주석은 `def` 줄 다음에 작성되어야 한다.
 
-- PEP 257 describes good docstring conventions.  Note that most
-  importantly, the ``"""`` that ends a multiline docstring should be
-  on a line by itself::
+- [PEP 257](https://www.python.org/dev/peps/pep-0257/)
+  은 좋은 독스트링 컨벤션이 설명되어있다. 여러 줄의 독스트링은 `"""` 로 끝날 때,
+  그 줄에만 이 표현이 위치해야한다.
 
-      """Return a foobang
+```python
+    """Return a foobang
 
-      Optional plotz says to frobnicate the bizbaz first.
-      """
+    Optional plotz says to frobnicate the bizbaz first.
+    """
+```
 
-- For one liner docstrings, please keep the closing ``"""`` on
-  the same line::
+- 한 줄로 된 독스트링의 경우, 닫는 ``"""`` 를 같은 줄에 유지해야한다.
 
+```python
       """Return an ex-parrot."""
+```
