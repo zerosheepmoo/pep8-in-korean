@@ -10,7 +10,7 @@ module.exports = {
    */
   description: description,
   base: '/pep8-in-korean/',
-  dest: 'build',
+  dest: './public',
 
   /**
    * Extra tags to be injected to the page HTML `<head>`
@@ -22,17 +22,14 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
-
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
-    editLinks: false,
-    docsDir: '',
-    editLinkText: '',
+    // Assumes GitHub. Can also be a full GitLab url.
+    repo: 'zerosheepmoo/pep8-in-korean',
     lastUpdated: true,
     nav: [
       {
@@ -42,10 +39,6 @@ module.exports = {
       {
         text: 'Document',
         link: '/doc/'
-      },
-      {
-        text: 'Github',
-        link: 'https://github.com/zerosheepmoo/pep8-in-korean'
       }
     ],
     sidebar: {
@@ -71,7 +64,7 @@ module.exports = {
             'string-quotes.md',
             'whitespace-in-expressions-and-statements.md',
             'references.md',
-            'comments.md'
+            'comments.md',
           ]
         }
       ]
@@ -84,12 +77,19 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          let dateString = new Date(timestamp).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }) + " [KST]"
+          return dateString
+
+        }
+      }
+    ]
+
   ],
   markdown: {
-    // options for markdown-it-anchor
-    anchor: { permalink: false },
-    // options for markdown-it-toc
-    toc: { includeLevel: [1, 2] },
     extendMarkdown: md => {
       // use more markdown-it plugins!
       md.use(require('markdown-it-footnote'))
