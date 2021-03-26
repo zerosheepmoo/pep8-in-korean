@@ -82,17 +82,15 @@ module.exports = {
       {
         transformer: (timestamp, lang) => {
           let dateString = new Date(timestamp).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }) + " [KST]"
-          return dateString
-
+          return dateString;
         }
       }
     ]
-
   ],
   markdown: {
     extendMarkdown: md => {
       // use more markdown-it plugins!
-      md.use(require('markdown-it-footnote'))
+      md.use(require('markdown-it-footnote'));
     }
   }
 
