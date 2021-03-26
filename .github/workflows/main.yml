@@ -13,10 +13,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: TEST
-        run: |
-             git log
-             echo $PATH
-             git log -1 /src/docguide/contribute.md
+        run: git log -5
+      
+      - name: Display the path
+        run: echo $PATH
+        shell: bash
+       
 
 
       # - name: Setup Node
