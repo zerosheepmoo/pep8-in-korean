@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Test
         uses: actions/checkout@v2
+
+      - name: TEST
         run: git log -1 /src/docguide/contribute.md
 
 
