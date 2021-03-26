@@ -1,44 +1,36 @@
-name: build and deploy to github pages
+name: github pages
 
 on:
   push:
     branches:
-      - action-test
+      - main
 
 jobs:
   deploy:
-    runs-on: macos-latest
+    runs-on: ubuntu-18.04
     steps:
-      - name: Checkout Test
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          depth: 0
 
-      - name: TEST
-        run: git log -5
-      
-      - name: Display the path
-        run: echo $PATH
-        shell: bash
-       
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: '12.x'
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      # - name: Setup Node
-      #   uses: actions/setup-node@v2.1.2
-      #   with:
-      #     node-version: '12.x'
+      - run: npm ci
+      - run: npm run build
 
-      # - name: Cache dependencies
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
-
-      # - run: npm ci
-      # - run: npm run build
-
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./public
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
