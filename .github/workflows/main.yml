@@ -1,15 +1,17 @@
-name: build and deploy to github pages
+name: github pages
 
 on:
   push:
     branches:
-      - master
+      - action-test
 
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v2.1.2
