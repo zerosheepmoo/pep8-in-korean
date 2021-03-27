@@ -77,7 +77,8 @@ module.exports = {
           title: '인삿말',
           collapsable: false,
           children: [
-            'hello-zerosheepmoo'
+            'hello-zerosheepmoo',
+            'hello-xodnr8925'
           ]
         }
       ]
