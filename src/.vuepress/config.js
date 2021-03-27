@@ -39,6 +39,10 @@ module.exports = {
       {
         text: 'Document',
         link: '/doc/'
+      },
+      {
+        text: 'Hello',
+        link: '/hello/'
       }
     ],
     sidebar: {
@@ -65,6 +69,15 @@ module.exports = {
             'whitespace-in-expressions-and-statements.md',
             'references.md',
             'comments.md',
+          ]
+        }
+      ],
+      '/hello/': [
+        {
+          title: '인삿말',
+          collapsable: false,
+          children: [
+            'hello-zerosheepmoo'
           ]
         }
       ]
@@ -95,3 +108,4 @@ module.exports = {
   }
 
 }
+
