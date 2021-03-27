@@ -1,4 +1,4 @@
-Variable Annotations
+베리어블 어노테이션스
 --------------------
 
 PEP 526 introduced variable annotations. The style recommendations for them are
