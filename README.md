@@ -14,4 +14,4 @@
 
 ## collaborator 로 지원하기
 
-- zerosheepmoo@gmail.com 로 **kakaoID**와 **github id** 를 보내주세요.
+- zerosheepmoo@gmail.com 로 **프로젝트에 참가할 메일주소**와 **github id** 를 보내주세요.
