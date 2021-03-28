@@ -21,8 +21,8 @@ cd pep8-in-korean
 # 패키지 매니저 설치
 npm install --global yarn
 
-# 패키지 설치
-yarn install
+# 프로젝트 내 패키지 설치
+yarn
 
 # 테스트
 yarn dev
@@ -31,6 +31,25 @@ yarn dev
 ```
 
 ![cloning](./img/cloning.png)
+
+### 기존작업환경 (npm) 이셨던 분들은
+
+- `git pull` 후 다음을 워크스페이스 디렉토리에서 실행하기
+- `node_modules` 삭제하기
+
+<!-- markdownlint-disable -->
+
+```bash
+# 패키지 삭제
+npm uninstall vuepress @vuepress/plugin-back-to-top @vuepress/plugin-last-updated @vuepress/plugin-medium-zoom markdown-it-footnote
+
+# 패키지 재설치
+yarn
+
+# 테스트
+yarn dev
+```
+<!-- markdownlint-enable -->
 
 ## 협업하기
 
