@@ -12,21 +12,22 @@
 
 ```bash
 ## cloning
-
 cd [workspace 디렉토리 경로]
-
 git clone https://github.com/zerosheepmoo/pep8-in-korean.git
 
-# node 모듈 설치
-
+# 디렉토리 이동
 cd pep8-in-korean
 
-npm install
+# 패키지 매니저 설치
+npm install --global yarn
+
+# 패키지 설치
+yarn install
 
 # 테스트
-# 이후 localhost:8080 으로 확인
+yarn dev
 
-npm run dev
+# 이후 localhost:8080 으로 확인
 ```
 
 ![cloning](./img/cloning.png)

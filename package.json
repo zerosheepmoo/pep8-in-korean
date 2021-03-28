@@ -3,28 +3,18 @@
   "version": "1.0.0",
   "description": "PEP8을 한국어로 번역한 결과물이 담겨있는 문서사이트입니다.",
   "main": "index.js",
+  "repository": "https://github.com/zerosheepmoo/pep8-in-korean.git",
+  "author": "zerosheepmoo <zerosheepmoo@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zerosheepmoo/pep8-in-korean.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zerosheepmoo/pep8-in-korean/issues"
-  },
-  "homepage": "https://github.com/zerosheepmoo/pep8-in-korean#readme",
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-last-updated": "^1.8.2",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
+    "markdown-it-footnote": "^3.0.2",
     "vuepress": "^1.8.2"
-  },
-  "dependencies": {
-    "markdown-it-footnote": "^3.0.2"
   }
 }
