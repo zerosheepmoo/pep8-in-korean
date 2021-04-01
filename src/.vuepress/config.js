@@ -53,7 +53,8 @@ module.exports = {
           children: [
             'contribute.md',
             'style.md',
-            'trans-philosophy.md'
+            'trans-philosophy.md',
+            'guide-video',
           ]
         }
       ],
