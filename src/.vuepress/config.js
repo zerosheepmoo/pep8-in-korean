@@ -102,6 +102,12 @@ module.exports = {
           return dateString;
         }
       }
+    ],
+    [
+      '@vuepress/plugin-google-analytics',
+      {
+        'ga': 'G-YT6KMEGETX'
+      }
     ]
   ],
   markdown: {
