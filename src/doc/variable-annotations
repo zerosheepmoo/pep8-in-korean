@@ -1,18 +1,18 @@
-베리어블 어노테이션스
+변수 주석
 --------------------
 
-PEP 526 introduced variable annotations. The style recommendations for them are
-similar to those on function annotations described above:
+PEP 526 은 다양한 주석들을 소개하고 있다. 그 스타일 권장사항들은 아래에서 묘사된 
+함수 주석과 유사하다.:
 
-- Annotations for module level variables, class and instance variables,
-  and local variables should have a single space after the colon.
+- 레벨 변수 모듈을 위한 주석, 클래스와 인스턴스 변수, 그리고 로컬 변수는
+  콜론 뒤에 뛰어쓰기 1칸을 가져야 한다.
 
-- There should be no space before the colon.
+- 콜론 앞에는 반드시 공백이 없어야 한다.
 
-- If an assignment has a right hand side, then the equality sign should have
-  exactly one space on both sides::
+- 만약 할당된 연산자가 우항을 가지고 있으면, 동일한 연산자는 반드시 1칸의 공백을
+  양쪽항에 가지고 있어야만 한다.::
 
-      # Correct:
+      # 올바른 예:
 
       code: int
 
@@ -22,7 +22,7 @@ similar to those on function annotations described above:
 
   ::
 
-      # Wrong:
+      # 잘못된 예:
 
       code:int  # No space after colon
       code : int  # Space before colon
@@ -30,15 +30,11 @@ similar to those on function annotations described above:
       class Test:
           result: int=0  # No spaces around equality sign
 
-- Although the PEP 526 is accepted for Python 3.6, the variable annotation
-  syntax is the preferred syntax for stub files on all versions of Python
-  (see PEP 484 for details).
+- PEP 526 이 파이썬 3.6에서 허용된다고 해도, 변수 주석 구조는 모든 버전 파이썬의 
+  스터브(stub) 파일들에 더 적합한 구조이다.( PEP 484 의 설명을 참고하기)
 
-.. rubric:: Footnotes
+.. rubric:: 각주
 
-.. [#fn-hi] *Hanging indentation* is a type-setting style where all
-   the lines in a paragraph are indented except the first line.  In
-   the context of Python, the term is used to describe a style where
-   the opening parenthesis of a parenthesized statement is the last
-   non-whitespace character of the line, with subsequent lines being
-   indented until the closing parenthesis
+.. [#fn-hi] *들여쓰기* 는 문단 내의 모든 줄들이 첫번째 줄은 비우도록 의도된 작성스타일이다.
+   파이썬의 맥락에서, 이는 괄호 문장의 여는 괄호가 그 뒤이어 오는 줄이 닫는 괄호까지
+   들여쓰기 된 경우와 함께, 줄의 마지막으로 공백이 아닌 문자일 때 주로 사용된다.
