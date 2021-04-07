@@ -68,7 +68,7 @@ module.exports = {
             'code-lay-out.md',
             'string-quotes.md',
             'whitespace-in-expressions-and-statements.md',
-            'when-to-use-trailing-commas',
+            'when-to-use-trailing-commas.md',
             'comments.md',
             'references.md',
           ]
@@ -81,7 +81,8 @@ module.exports = {
           children: [
             'hello-zerosheepmoo',
             'hello-xodnr8925',
-            'hello-Ohjiwoo-lab'
+            'hello-Ohjiwoo-lab',
+            'hello-Sumin0916'
           ]
         }
       ]
@@ -106,7 +107,7 @@ module.exports = {
     [
       '@vuepress/plugin-google-analytics',
       {
-        'ga': 'G-YT6KMEGETX'
+        'ga': 'G-YT6KMEGETX',
       }
     ]
   ],
