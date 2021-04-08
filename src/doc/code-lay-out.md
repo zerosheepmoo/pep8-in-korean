@@ -116,22 +116,19 @@ result = some_function_that_takes_arguments(
 )
 ```
 
-## Tabs or Spaces?
+## 탭 아니면 스페이스?
 
-Spaces are the preferred indentation method.
+스페이스로 공백을 만드는 것이 선호되는 들여쓰기 방식이다.
 
-Tabs should be used solely to remain consistent with code that is
-already indented with tabs.
+탭은 이미 탭으로 들여쓰기 된 코드에 일관성을 유지하기 위해 단독으로 사용되어야 한다.
 
-Python 3 disallows mixing the use of tabs and spaces for indentation.
+Python 3에서는 들여쓰기에 탭과 스페이스를 섞어서 사용하는 것을 허용하지 않는다.
 
-Python 2 code indented with a mixture of tabs and spaces should be
-converted to using spaces exclusively.
+탭과 스페이스를 혼용하여 들여쓰기 된 Python 2 코드는 오로지 스페이스만을 사용하는 것으로 변환되어야 한다.
 
-When invoking the Python 2 command line interpreter with
-the ``-t`` option, it issues warnings about code that illegally mixes
-tabs and spaces.  When using ``-tt`` these warnings become errors.
-These options are highly recommended!
+Python 2가 `-t` 옵션과 함께 명령어 해석기(command line interpreter)에 적용될 때,
+불법적으로 탭과 스페이스를 섞어서 사용한 코드에 대해 경고한다.
+다만, `-tt` 옵션을 사용할 때는 이 경고가 에러로 바뀐다. 이 옵션들은 매우 추천된다!
 
 ## Maximum Line Length
 
