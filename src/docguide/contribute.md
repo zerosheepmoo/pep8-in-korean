@@ -32,23 +32,21 @@ yarn dev
 
 ![cloning](./img/cloning.png)
 
-### 기존작업환경 (npm) 이셨던 분들은
+### 기존작업환경 (npm, vuepress1.0) 이셨던 분들은
 
-- `git pull` 후 다음을 워크스페이스 디렉토리에서 실행하기
-- `node_modules` 삭제하기
+- 우선, `node_modules` 삭제하기
+- `git pull` 한 번 더 후 다음을 워크스페이스 디렉토리에서 실행하기
 
 <!-- markdownlint-disable -->
 
 ```bash
-# 패키지 삭제
-npm uninstall vuepress @vuepress/plugin-back-to-top @vuepress/plugin-last-updated @vuepress/plugin-medium-zoom markdown-it-footnote
-
 # 패키지 재설치
 yarn
 
 # 테스트
 yarn dev
 ```
+
 <!-- markdownlint-enable -->
 
 ## 협업하기
