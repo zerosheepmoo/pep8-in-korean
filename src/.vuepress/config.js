@@ -72,6 +72,7 @@ module.exports = {
             'naming-conventions.md',
             'comments.md',
             'references.md',
+            'copyright.md'
           ]
         }
       ],
