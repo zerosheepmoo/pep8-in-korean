@@ -1,257 +1,257 @@
-Naming Conventions
-==================
+# 작명 컨벤션
 
-The naming conventions of Python's library are a bit of a mess, so
-we'll never get this completely consistent -- nevertheless, here are
-the currently recommended naming standards.  New modules and packages
-(including third party frameworks) should be written to these
-standards, but where an existing library has a different style,
-internal consistency is preferred.
+Python 라이브러리의 작명 컨벤션은 이미 정리가 안되어있다.
+그래서 앞으로도 절대 일관성있게 유지할 수가 없을 것이다.
+그럼에도 불구하고 이곳에 권장하는 작명 기준을 소개한다.
+새로운 모듈들과 패키지들(서드 파티 프레임워크 등을 포함하여)은 이 기준대로 작성해야한다.
+하지만 이미 존재하는 라이브러리에서 다른 스타일을 따르고 있다면
+내부의 일관성을 우선하자.(_역: 그 라이브러리의 스타일들을 우선하자_)
 
-Overriding Principle
---------------------
+## 오버라이딩 컨벤션
 
-Names that are visible to the user as public parts of the API should
-follow conventions that reflect usage rather than implementation.
+API의 공개 부분으로 사용자에게 표시되는 이름은
+구현보다는 사용법을 반영하는 컨벤션을 따르자.
 
 ## 설명: 작명 컨벤션
 
 > [설명: 작명 컨벤션](./descriptive-naming-styles.md) 이 번역되면 채워질 예정
 
-Prescriptive: Naming Conventions
---------------------------------
+## 규정: 작명 컨벤션
 
-Names to Avoid
+### 피해야할 이름
 
-~~~~~~~~~~~~~~
+`l` (소문자 엘), `O` (대문자 오), `I` (대문자 아이)는
+단독으로 변수명으로 절대 사용하지 마라.
 
-Never use the characters 'l' (lowercase letter el), 'O' (uppercase
-letter oh), or 'I' (uppercase letter eye) as single character variable
-names.
+몇 몇 폰트에서는 이글자들이 숫자 1, 0과 구분하기 어렵다.
+`l`을 쓰고 싶을 땐 `L`을 쓰자.
 
-In some fonts, these characters are indistinguishable from the
-numerals one and zero.  When tempted to use 'l', use 'L' instead.
+### ASCII 호환성
 
-ASCII Compatibility
-~~~~~~~~~~~~~~~~~~~
+표준 라이브러리에서 사용되는 식별자들은 반드시 ASCII 호환성을 따라야한다.
+[PEP 3131](https://www.python.org/dev/peps/pep-3131)의
+[정책 섹션](https://www.python.org/dev/peps/pep-3131/#policy-specification)
+에 설명된 것처럼 말이다.
 
-Identifiers used in the standard library must be ASCII compatible
-as described in the
-`policy section <https://www.python.org/dev/peps/pep-3131/#policy-specification>`_
-of PEP 3131.
+### 패키지와 모듈 명
 
-Package and Module Names
+모듈 이름은 모두 소문자를 사용하여 짧게 지어야한다.
+밑줄(Underscores)은 가독성 향상을 위해 사용될 수 있다.
 
-~~~~~~~~~~~~~~~~~~~~~~~~
+Python 패키지 이름은 모두 소문자를 사용하여 짧게 지어야한다. 단, 밑줄은 권장되지 않는다.
 
-Modules should have short, all-lowercase names.  Underscores can be
-used in the module name if it improves readability.  Python packages
-should also have short, all-lowercase names, although the use of
-underscores is discouraged.
+C 또는 C++ 로 쓰여진 확장모듈들이
+더 높은 레벨의 인터페이스를 제공하는
+Python 모듈(예를 들면, 더 객체 지향적인)을 동반할 경우,
+C/C++ 모듈들은 첫글자 밑줄 이름으로 짓는다. (예를 들면 `_socket`)
 
-When an extension module written in C or C++ has an accompanying
-Python module that provides a higher level (e.g. more object oriented)
-interface, the C/C++ module has a leading underscore
-(e.g. ``_socket``).
+### 클래스 명
 
-Class Names
-~~~~~~~~~~~
+클래스 명들은 일반적으로 CapWords[^1] 컨벤션을 따른다.
 
-Class names should normally use the CapWords convention.
+인터페이스가 문서화되어 있고, 주로 Callable[^2]로 사용되는 경우,
+함수의 작명 컨벤션을 따를 수 있다.
 
-The naming convention for functions may be used instead in cases where
-the interface is documented and used primarily as a callable.
+내장 된 클래스들과 컨벤션이 다른 것에 주목하자.
+대부분의 내장 된 클래스 명은 단일 단어 (또는 같이 실행되는 두개의 단어)다.
+CapWords 컨벤션은 예외(exception)의 이름이나 내장 상수에만 사용된다.
 
-Note that there is a separate convention for builtin names: most builtin
-names are single words (or two words run together), with the CapWords
-convention used only for exception names and builtin constants.
+### 타입 변수 명
 
-Type Variable Names
-~~~~~~~~~~~~~~~~~~~
+[PEP484](https://www.python.org/dev/peps/pep-0484/) 에서 소개된 타입 변수의 이름은
+CapWords 를 사용하여 짧게 짓는다. 예를들어, `T`, `AnyStr`, `Num`.
+`_co` 나 `_contra` 접두어를 공변(covariant)과 반변(contravariant)[^3] 행위를
+선언하기 위해 사용할 수 있다. 다음처럼 말이다.
 
-Names of type variables introduced in PEP 484 should normally use CapWords
-preferring short names: ``T``, ``AnyStr``, ``Num``. It is recommended to add
-suffixes ``_co`` or ``_contra`` to the variables used to declare covariant
-or contravariant behavior correspondingly::
+```python
+from typing import TypeVar
 
-    from typing import TypeVar
+VT_co = TypeVar('VT_co', covariant=True)
+KT_contra = TypeVar('KT_contra', contravariant=True)
+```
 
-    VT_co = TypeVar('VT_co', covariant=True)
-    KT_contra = TypeVar('KT_contra', contravariant=True)
+### 예외 명
 
-Exception Names
-~~~~~~~~~~~~~~~
+예외는 클래스기 때문에, [클래스 작명 컨벤션](#클래스-명)을 적용한다.
+하지만 만약 예외가 실제로 오류일 경우(_역: 오류와 같은 개념일 경우_),
+`"Error"` 라는 접두어를 예외 명 앞에다 붙여야한다.
 
-Because exceptions should be classes, the class naming convention
-applies here.  However, you should use the suffix "Error" on your
-exception names (if the exception actually is an error).
+### 전역 변수 명
 
-Global Variable Names
-~~~~~~~~~~~~~~~~~~~~~
+(이 변수들이 하나의 모듈 안에서만 있다고 가정하자)
+함수에 대한 컨벤션과 같다.
 
-(Let's hope that these variables are meant for use inside one module
-only.)  The conventions are about the same as those for functions.
+`from M import *` 를 사용하기 위해 설계된 모듈들은
+`__all__` 메커니즘을 사용하여 전역변수들을 내보내기 하는 것을 막아야한다.
+또는 밑줄을 접두어로 넣는 오래된 컨벤션을 사용하자.
+(이 전역 변수들이 "module non-public"[^4]임을 나타내고 싶을 수 있을 때)
 
-Modules that are designed for use via ``from M import *`` should use
-the ``__all__`` mechanism to prevent exporting globals, or use the
-older convention of prefixing such globals with an underscore (which
-you might want to do to indicate these globals are "module
-non-public").
+함수와 변수 명
 
-Function and Variable Names
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+함수 명은 소문자여야하며 가독성 향상을 위해
+밑줄로 단어를 구분해야한다.
 
-Function names should be lowercase, with words separated by
-underscores as necessary to improve readability.
+변수 명도 함수 명과 같은 컨벤션을 따른다.
 
-Variable names follow the same convention as function names.
+mixedCase[^5] 는 이미 스타일이 존재하는 컨텍스트에만
+(예를 들면 `threading.py`) 혀용된다.
+이는 이전 버전과의 호환성을 지키기위한 것이다.
 
-mixedCase is allowed only in contexts where that's already the
-prevailing style (e.g. threading.py), to retain backwards
-compatibility.
+### 함수와 메소드의 아규먼트들
 
-Function and Method Arguments
+항상 `self` 를 인스턴스 메소드의 첫번째 아규먼트로 사용한다.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+항상 `cls` 를 클래스 메소드의 첫번째 아규먼트로 사용한다.
 
-Always use ``self`` for the first argument to instance methods.
+만약 함수의 아규먼트 명이 이미 있는 키워드와 충돌이 있을 경우,
+일반적으로 후행 밑줄을 추가하는 것이
+약어 또는 철자 손상을 사용하는 것보다 낫다.
+따라서 `class_`가 `clss` 보다 낫다.
+(혹은 동의어등을 사용하여 이러한 충돌을 피하는 것이 더 나을 수 있다.)
 
-Always use ``cls`` for the first argument to class methods.
+### 메소드 명과 인스턴스 변수
 
-If a function argument's name clashes with a reserved keyword, it is
-generally better to append a single trailing underscore rather than
-use an abbreviation or spelling corruption.  Thus ``class_`` is better
-than ``clss``.  (Perhaps better is to avoid such clashes by using a
-synonym.)
-
-Method Names and Instance Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Use the function naming rules: lowercase with words separated by
-underscores as necessary to improve readability.
-
-Use one leading underscore only for non-public methods and instance
-variables.
-
-To avoid name clashes with subclasses, use two leading underscores to
-invoke Python's name mangling rules.
-
-Python mangles these names with the class name: if class Foo has an
-attribute named ``__a``, it cannot be accessed by ``Foo.__a``.  (An
-insistent user could still gain access by calling ``Foo._Foo__a``.)
-Generally, double leading underscores should be used only to avoid
-name conflicts with attributes in classes designed to be subclassed.
-
-Note: there is some controversy about the use of __names (see below).
-
-Constants
-
-~~~~~~~~~
-
-Constants are usually defined on a module level and written in all
-capital letters with underscores separating words.  Examples include
-``MAX_OVERFLOW`` and ``TOTAL``.
-
-Designing for Inheritance
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Always decide whether a class's methods and instance variables
-(collectively: "attributes") should be public or non-public.  If in
-doubt, choose non-public; it's easier to make it public later than to
-make a public attribute non-public.
-
-Public attributes are those that you expect unrelated clients of your
-class to use, with your commitment to avoid backwards incompatible
-changes.  Non-public attributes are those that are not intended to be
-used by third parties; you make no guarantees that non-public
-attributes won't change or even be removed.
-
-We don't use the term "private" here, since no attribute is really
-private in Python (without a generally unnecessary amount of work).
-
-Another category of attributes are those that are part of the
-"subclass API" (often called "protected" in other languages).  Some
-classes are designed to be inherited from, either to extend or modify
-aspects of the class's behavior.  When designing such a class, take
-care to make explicit decisions about which attributes are public,
-which are part of the subclass API, and which are truly only to be
-used by your base class.
-
-With this in mind, here are the Pythonic guidelines:
-
-- Public attributes should have no leading underscores.
-
-- If your public attribute name collides with a reserved keyword,
-  append a single trailing underscore to your attribute name.  This is
-  preferable to an abbreviation or corrupted spelling.  (However,
-  notwithstanding this rule, 'cls' is the preferred spelling for any
-  variable or argument which is known to be a class, especially the
-  first argument to a class method.)
-
-  Note 1: See the argument name recommendation above for class methods.
-
-- For simple public data attributes, it is best to expose just the
-  attribute name, without complicated accessor/mutator methods.  Keep
-  in mind that Python provides an easy path to future enhancement,
-  should you find that a simple data attribute needs to grow
-  functional behavior.  In that case, use properties to hide
-  functional implementation behind simple data attribute access
-  syntax.
-
-  Note 1: Properties only work on new-style classes.
-
-  Note 2: Try to keep the functional behavior side-effect free,
-  although side-effects such as caching are generally fine.
-
-  Note 3: Avoid using properties for computationally expensive
-  operations; the attribute notation makes the caller believe that
-  access is (relatively) cheap.
-
-- If your class is intended to be subclassed, and you have attributes
-  that you do not want subclasses to use, consider naming them with
-  double leading underscores and no trailing underscores.  This
-  invokes Python's name mangling algorithm, where the name of the
-  class is mangled into the attribute name.  This helps avoid
-  attribute name collisions should subclasses inadvertently contain
-  attributes with the same name.
-
-  Note 1: Note that only the simple class name is used in the mangled
-  name, so if a subclass chooses both the same class name and attribute
-  name, you can still get name collisions.
-
-  Note 2: Name mangling can make certain uses, such as debugging and
-  ``__getattr__()``, less convenient.  However the name mangling
-  algorithm is well documented and easy to perform manually.
-
-  Note 3: Not everyone likes name mangling.  Try to balance the
-  need to avoid accidental name clashes with potential use by
-  advanced callers.
-
-Public and Internal Interfaces
-------------------------------
-
-Any backwards compatibility guarantees apply only to public interfaces.
-Accordingly, it is important that users be able to clearly distinguish
-between public and internal interfaces.
-
-Documented interfaces are considered public, unless the documentation
-explicitly declares them to be provisional or internal interfaces exempt
-from the usual backwards compatibility guarantees. All undocumented
-interfaces should be assumed to be internal.
-
-To better support introspection, modules should explicitly declare the
-names in their public API using the ``__all__`` attribute. Setting
-``__all__`` to an empty list indicates that the module has no public API.
-
-Even with ``__all__`` set appropriately, internal interfaces (packages,
-modules, classes, functions, attributes or other names) should still be
-prefixed with a single leading underscore.
-
-An interface is also considered internal if any containing namespace
-(package, module or class) is considered internal.
-
-Imported names should always be considered an implementation detail.
-Other modules must not rely on indirect access to such imported names
-unless they are an explicitly documented part of the containing module's
-API, such as ``os.path`` or a package's ``__init__`` module that exposes
-functionality from submodules.
+함수 작명 규칙을 따르자.
+소문자를 사용하고 가독성 향상을 위해 단어 구분할 때 밑줄을 귿는 것 말이다.
+
+첫글자만 밑줄인 단어는 non-public 인 메소드와 인스턴스 변수들을 위해서만 스여야한다.
+
+하위 클래스들과의 이름 충돌을 피하기위해, 두 개의 밑줄로 시작하는 단어를 사용하여
+Python의 이름 맹글링[^6] 규칙을 불러오자(invoke).
+
+Python 은 다음과 같이 이름들을 클래스 명과 함께 맹글한다.
+만약 클래스 `Foo` 가 `__a` 어트리뷰트를 갖고 있을 경우, `Foo.__a`로 접근할 수 없다.
+(필요한 사용자는 `Foo._Foo__a`를 호출하여 여전히 접근할 수는 있다.)
+일반적으로 두개의 밑줄만으로 시작하는 이름은 하위 클래스로 설계된 클래스 내의 어트리뷰트와
+이름 충돌을 피하는 용도로 사용된다.
+
+:::tip 안내
+`__names` 를 사용하는 것에 대해 논쟁이 있다. (아래를 참고하기).
+:::
+
+### 상수
+
+상수는 주로 모듈 레벨에서 정의된다. 그리고 대문자로만 쓰여지며
+단어를 구분하기 위해 밑줄이 사용된다.
+예를 들면, ``MAX_OVERFLOW``와 ``TOTAL``.
+
+### 상속을 고려한 설계
+
+항상 클래스 메소드와 인스턴스 변수(통칭: **"어트리뷰트"**)
+가 퍼블릭인지 아닌지 결정하라.
+만약 결정되지 않았다면, 퍼블릭이 아닌 컨벤션을 골라라.
+나중에 퍼블릭으로 바꾸는 것이 퍼블릭을 아닌 것으로 바꾸는 것이 더 쉽다.
+
+퍼블릭 어트리뷰트는 이전 버전과의 호환성을 유지하려는 노력과 함께,
+사용할 클래스의 클라이언트와 관계되지 않을 것을 예상하는 어트리뷰트다.
+퍼블릭이 아닌 어트리뷰트는 외부에서 사용되게끔 의도하지 않는 어트리뷰트다.
+그래서 퍼블릭이 아닌 어트리뷰트가 앞으로 바뀌거나 제거되지 않을 것이라는
+보장을 하지 말아야된다.
+
+우리는 "프라이빗(private)"이라는 용어를 사용하지 않는다.
+왜냐하면 어떠한 어트리뷰트도 실제 Python 에서는 프라이빗일 수 없기 때문이다.(일반적으로 불필요한 양의 추가 작업 없이는)
+
+어트리뷰트들의 다른 종류로는 "하위클래스 API"의 일부인 어트리뷰트가 있다.
+(자주 "protected"로 다른 언어에서 표현되는 어트리뷰트)
+몇 클래스는 클래스의 행위의 측면에서 확장 또는 수정(modify)하기 위해 상속되도록 설계되었다.
+그러한 클래스를 설계할 때는,
+어떤 어트리뷰트를 퍼블릭으로 하고, 어떤 부분을 하위클래스 API로 할 것이며,
+그리고 어떤 어트리뷰트를 진짜로 당신의 기반 클래스에서만 사용할 것인지
+명시적인 결정을 하는 것에 주의해야한다.
+
+이를 명심하며, 다음의 Python 스러운 가이드라인을 살펴보자.
+
+- 퍼블릭 어트리뷰트는 첫글자가 밑줄이면 안된다.
+
+- 만약 퍼블릭 어트리뷰트 명이 이미 있던 키워드와 충돌하면,
+  하나의 후행 밑줄을 어트리뷰트 명에 추가하자.
+  이는 약어나 철자 손상보다 권장된다.
+  (하지만 그렇지 않은 규칙도 있다.
+  `'cls'`는 클래스를 나타내는 변수 또는 아규먼트,
+  특히 클래스 메소드의 첫번째 아규먼트로도 바람직한 철자다.)
+
+:::tip 안내 1
+위에 안내 된 클래스 메소드에서의 아규먼트 권장사항을 참고
+:::
+
+- 간단한 퍼블릭 데이터 어트리뷰트를 위해선
+  단순히 어트리뷰트 명을 복잡한 접근자, 설정자(mutator) 없이 노출하는 것이 가장 좋다.
+  Python 은 단순한 데이터 어트리뷰트가
+  기능적 행위(functional behavior)을 확장해야하는 경우 ,
+  향후 향상(enhancement)를 위한 쉬운 길을 제공하고 있다는 것을 명심하자.
+  이러한 경우, 프로퍼티를 사용하여
+  간단한 데이터 어트리뷰트 접근 구문 뒤에 기능 구현을 숨기자.
+
+:::tip 안내 1
+프로퍼티는 새로운 스타일의 클래스에서만 작동한다.
+:::
+
+:::tip 안내 2
+기능적 행위의 사이드 이펙트(side-effect)가 없도록 유지하도록 노력하자.
+하지만 캐싱과 같은 사이드 이펙트는 일반적으로 괜찮다.
+:::
+
+:::tip 안내 3
+계산적으로 비용이 높은 연산에 프로퍼티를 사용하는 것을 피하라
+어트리뷰트 표기법이 호출자(caller)의 접근
+비용이 (상대적으로) 낮음을 보장한다.
+:::
+
+- 하위 클래스로 의도된 클래스일 경우,
+  그리고 하위 클래스에서 사용하지 않으려는 어트리뷰트가 있는 경우
+  두개의 밑줄로 시작하여 후행 밑줄이 없는 작명법을 고려하자.
+  이는 Python 의 이름 맹글링 알고리즘을 불러일으킨다.
+  어트리뷰트가 위치한 클래스의 이름 또한 어트리뷰트 명으로 맹글된다.
+  이는 하위클래스에 예기치 않게 같은 이름의 어트리뷰트가 포함된 경우
+  어트리뷰트 명 충돌을 방지하는데 도움이 된다.
+
+:::tip 안내 1
+단순한 클래스(_역: 여기서는 상속하지 않은 클래스_)의 이름만이 맹글된 이름에 사용되는 것을 주목하자.
+그렇기 때문에 만약 하위 클래스가 같은 클래스 명과 어트리뷰트 명을 선택할 경우,
+여전히 이름 충돌을 겪을 것이다.
+:::
+:::tip 안내 2
+이름 맹글링은 디버깅이나 `__gertattr__()` 같은 특정 용도를
+더 불편하게 만들 수 있다. 하지만 이름 맹글링 알고리즘은 잘 문서화 되어있으며,
+메뉴얼하게 수행하기 쉽다.
+:::
+:::tip 안내 3
+모두가 이름 맹글링을 좋아하는 것은 아니다.  
+우발적인 이름 충돌을 방지하는 것과 고급 호출자(_역: 여기서는 mangling 관련_)의
+잠재적인 사용 간의 균형을 맞추자.
+:::
+
+## 퍼블릭 그리고 내부 인터페이스
+
+이전 버전과의 호환성은 퍼블릭 인터페이스만 보장한다.
+따라서, 사용자가 퍼블릭 인터페이스와 내부 인터페이스를
+분명하게 구분할 수 있도록 하는 것이 중요하다.
+
+문서화된 인터페이스는 퍼블릭으로 간주된다.
+문서에서 일반적으로 이전 버전과의 호환성 보장에서 제외되는
+임시(provisional) 또는 내부 인터페이스라고 명시적으로 선언하지 않는 한 말이다.
+모든 문서화되지 않은 인터페이스는 내부 인터페이스 간주된다.
+
+더 나은 검사(introspection) 지원을 위해선,
+모듈은 퍼블릭 API 에서 `__all__` 어트리뷰트를 사용함으로써 이름을 명시적으로 선언해야한다.
+`__all__`을 빈 리스트로 설정하는 것은 모듈이 퍼블릭 API 가 없음을 나타낸다.
+
+`__all__` 이 적절히 설정되었음에도 내부 인터페이스
+(패키지, 모듈, 클래스, 함수, 어트리뷰트나 다른 이름들)은
+첫글자만 밑줄인 단어를 사용해야한다.
+
+인터페이스를 갖고 있는 네임스페이스(패키지, 모듈, 또는 클래스)가내부(internal)로 간주될 경우 또한
+내부 인터페이스로 간주된다.
+
+불러오기된 이름은 구현 세부사항으로 항상 간주되어야 한다.
+이를 포함하는 모듈의 API의 명시적으로 문서화 된 부분이 아닌 한,
+다른 모듈들은 불러오기된 이름으로의 간접적인 접근에 의존하지 않아야한다.
+예를 들면 `os.path` 나 패키지의 `__init__` 모듈 같이
+하위 모듈로부터 기능이 노출된 API 말이다.
+
+[^1]: 대문자. 예: `MyClass`
+[^2]: 호출할 수 있는. 예: `my_class()`
+[^3]: [위키피디아](https://ko.wikipedia.org/wiki/%EB%B2%A1%ED%84%B0%EC%9D%98_%EA%B3%B5%EB%B3%80%EC%84%B1_%EB%B0%8F_%EB%B0%98%EB%B3%80%EC%84%B1)
+[^4]: 모듈을 기준으로 public 이 아닌 것
+[^5]: 대소문자 혼용.
+[^6]: [영문 위키피디아](https://en.wikipedia.org/wiki/Name_mangling#:~:text=mangling%20%2D%20see%20above.-,Python,more%20than%20one%20trailing%20underscore.)

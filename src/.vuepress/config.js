@@ -69,6 +69,7 @@ module.exports = {
             'string-quotes.md',
             'whitespace-in-expressions-and-statements.md',
             'when-to-use-trailing-commas.md',
+            'naming-conventions.md',
             'comments.md',
             'references.md',
           ]
