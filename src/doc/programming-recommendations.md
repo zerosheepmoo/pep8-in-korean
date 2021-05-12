@@ -330,4 +330,12 @@ def foo():
         return 42
 ```
 
+## 함수 어노테이션
+
+> [함수 어노테이션](./function-annotations.md) 번역 후 합칠 예정
+
+## 변수 어노테이션
+
+> [변수 어노테이션](./variable-annotations.md) 번역 후 합칠 예정
+
 [^1]: [참조 횟수 계산 방식](https://en.wikipedia.org/wiki/Reference_counting)
