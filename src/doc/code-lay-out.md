@@ -131,42 +131,35 @@ Python 3에서는 들여쓰기에 탭과 스페이스를 혼용하는 것을 허
 `-tt` 옵션을 사용할 때는 경고대신 에러가 발생한다.
 이 옵션들은 매우 추천된다!
 
-## Maximum Line Length
+## 라인의 최대 길이
 
-Limit all lines to a maximum of 79 characters.
+모든 라인은 최대 79개의 문자로 제한한다.
 
-For flowing long blocks of text with fewer structural restrictions
-(docstrings or comments), the line length should be limited to 72
-characters.
+긴 텍스트 블록이 보다 적은 구조적인 제약(독스트링 또는 코멘트)으로 이어지도록,
+그 라인의 길이는 72개의 문자로 제한되어야 한다.
 
-Limiting the required editor window width makes it possible to have
-several files open side by side, and works well when using code
-review tools that present the two versions in adjacent columns.
+요구되는 에디터 창 너비를 제한하는 것은 여러 개의 파일들을 나란히 여는 것을
+가능하게 하고, 인접한 열들에 코드를 두 가지 버전으로 보여주는 리뷰 툴을 사용할 때 유용하다.
 
-The default wrapping in most tools disrupts the visual structure of the
-code, making it more difficult to understand. The limits are chosen to
-avoid wrapping in editors with the window width set to 80, even
-if the tool places a marker glyph in the final column when wrapping
-lines. Some web based tools may not offer dynamic line wrapping at all.
+대부분의 툴들에서 디폴트로 래핑하는 것은 코드의 시각적 구조를 방해하여, 이해하는 것을 더
+어렵게 한다. 비록 그 툴이 여러 라인을 래핑할 때 마지막 열에 기호 표식(marker glyph)을
+두었더라도, 그 제한이 창 너비를 80으로 설정한 에디터들에서 래핑하는 것을 피하도록 했다.
+툴들을 바탕으로 하는 몇 가지 웹은 다이나믹 라인(dynamic line)을 래핑하는 것을 전혀 제공하지 않는다.
 
-Some teams strongly prefer a longer line length.  For code maintained
-exclusively or primarily by a team that can reach agreement on this
-issue, it is okay to increase the line length limit up to 99 characters,
-provided that comments and docstrings are still wrapped at 72
-characters.
+어떠한 팀들은 라인의 길이가 더 긴 것을 강하게 선호한다. 이 이슈에 동의하는
+팀에 의해 배타적으로 또는 종종 유지되는 코드를 위해, 코멘트나 독스트링이 여전히
+72글자로 래핑되도록 하는 경우에는 라인 길이의 한계가 99글자까지 증가하는 것을 허용한다.
 
-The Python standard library is conservative and requires limiting
-lines to 79 characters (and docstrings/comments to 72).
+Python의 표준 라이브러리는 규칙이 엄격하고, 라인이 79글자로 제한되도록 요구한다
+(그리고 독스트링과 코멘트는 72글자까지).
 
-The preferred way of wrapping long lines is by using Python's implied
-line continuation inside parentheses, brackets and braces.  Long lines
-can be broken over multiple lines by wrapping expressions in
-parentheses. These should be used in preference to using a backslash
-for line continuation.
+긴 라인들을 래핑하는 가장 선호되는 방법은 괄호, 대괄호 그리고 중괄호 내에서
+Python의 암시적으로 라인이 이어지는 방법을 사용하는 것이다. 긴 라인들은 괄호로
+래핑하는 표현에 의해서 여러 개의 줄들로 분할될 수 있다. 이는 라인이 계속해서 이어지는
+문장에서 백슬래시를 사용하는 방법으로 우선적으로 사용되어야 한다.
 
-Backslashes may still be appropriate at times.  For example, long,
-multiple ``with``-statements cannot use implicit continuation, so
-backslashes are acceptable::
+백슬래시는 여전히 때때로 적당하다. 예를들어, 긴, 여러 줄인 ``with``-문장은
+암시적인 방식으로 문장들을 적을 수 없어서, 백슬래시가 사용될 수 있다.
 
 ```python
 with open('/path/to/some/file/you/want/to/read') as file_1, \
@@ -174,12 +167,12 @@ with open('/path/to/some/file/you/want/to/read') as file_1, \
     file_2.write(file_1.read())
 ```
 
-(See the previous discussion on `multiline if-statements`_ for further
-thoughts on the indentation of such multiline ``with``-statements.)
+(이런 여러줄에 걸친 ``with``-문장의 들여쓰기에서 더 확장된 생각으로
+이전에 의논했었던 `여러 줄에 걸친 if-문장`을 보라.)
 
-Another such case is with ``assert`` statements.
+이러한 경우의 또다른 예시로 ``assert`` 문장이 있다.
 
-Make sure to indent the continued line appropriately.
+여러 줄에 걸쳐 이어지는 문장은 적절히 들여쓰기 해야함을 명심하라.
 
 ## Should a Line Break Before or After a Binary Operator?
 
