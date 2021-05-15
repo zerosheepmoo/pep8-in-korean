@@ -166,6 +166,14 @@ def Foo(self, bar):
 </pre>
 
 <!-- markdownlint-enable -->
+- 부득이하게 한 줄 최대 길이 제한을 넘어설 경우에는 `<!-- markdownlint-[disable|enable] -->` 을 사용
+
+```md
+<!-- markdownlint-disable -->
+무언가 어긴 것...
+<!-- markdownlint-enable -->
+```
+
 #### 언어 선언
 
 구문 하이라이터(syntax highlighter)나 다음 편집기(next editor)가 추측하지 않도록
@@ -239,16 +247,16 @@ bazel run :target -- --flag --foo=longlonglonglonglongvalue \
 - 좋은 예
 
 ```markdown
-See the syntax guide for more info: [link](syntax_guide.md).
-Or, check out the style guide [here](style_guide.md).
-DO NOT DO THIS.
+See the [syntax guide](syntax_guide.md) for more info.
+Or, check out the [style guide](style_guide.md).
 ```
 
 - 좋지 않은 예
 
 ```markdown
-See the [syntax guide](syntax_guide.md) for more info.
-Or, check out the [style guide](style_guide.md).
+See the syntax guide for more info: [link](syntax_guide.md).
+Or, check out the style guide [here](style_guide.md).
+DO NOT DO THIS.
 ```
 
 ## 이미지
