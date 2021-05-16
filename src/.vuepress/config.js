@@ -73,7 +73,6 @@ module.exports = {
             'comments.md',
             'naming-conventions.md',
             'programming-recommendations.md',
-            'references.md',
             'copyright.md'
           ]
         }
