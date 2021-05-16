@@ -379,4 +379,6 @@ import os
 import sys
 ```
 
-[^7]: Hanging indentation is a type-setting style where all the lines in a paragraph are indented except the first line. In the context of Python, the term is used to describe a style where the opening parenthesis of a parenthesized statement is the last non-whitespace character of the line, with subsequent lines being indented until the closing parenthesis.
+[^7]: 내어쓰기(hanging indent)란 시작 줄을 제외한 나머지 줄에 들여쓰기를 하는 형식 설정(type-setting) 스타일이다.
+파이썬 문법에서 이 개념은 열린 괄호가 줄의 마지막 문자고,
+이후 닫는 괄호가 있는 줄까지 들여쓰기 하는 스타일을 설명하는 데 사용한다.
