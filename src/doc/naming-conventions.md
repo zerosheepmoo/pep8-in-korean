@@ -7,14 +7,63 @@ Python 라이브러리의 작명 컨벤션은 이미 정리가 안 되어있다.
 하지만 이미 존재하는 라이브러리에서 다른 스타일을 따르고 있다면
 내부의 일관성을 우선하자.(_역: 그 라이브러리의 스타일들을 우선하자_)
 
-## 오버라이딩 컨벤션
+## 오버라이딩 원리
 
 API의 공개 부분으로 사용자에게 표시되는 이름은
 구현보다는 사용법을 반영하는 컨벤션을 따르자.
 
-## 설명: 작명 컨벤션
+## 설명: 작명 스타일
 
-> [설명: 작명 컨벤션](./descriptive-naming-styles.md) 이 번역되면 채워질 예정
+다양한 작명 스타일이 존재한다. 작명 스타일의 용도와는 별개로 어떤 작명 스타일이 사용되는지 인식 할 수 있다.
+
+일반적으로 다음의 작명 스타일로 종류가 구분된다.
+
+- `b` (단일 소문자)
+- `B` (단일 대문자)
+- `lowercase` (_역: 소문자_)
+- `lower_case_with_underscores` (_역: 밑줄 친 소문자_)
+- `UPPERCASE` (_역: 대문자_)
+- `UPPER_CASE_WITH_UNDERSCORES` (_역: 밑줄 친 대문자_)
+- `CapitalizedWords` (_역: 단어 첫 글자 대문자_) (또는 CapWords,
+  또는 CamelCase(글자의 울퉁불퉁한 모양 때문에 그렇게 이름이 붙여졌다.) [^1]).
+  이는 StudlyCaps로 라고도 불리운다.
+
+:::tip 참고
+CapWords 스타일로 약어를 사용할 때, 약어의 모든 문자를 대문자로 사용하자.
+예를 들면, `HTTPServerError`가 `HttpServerError`보다 좋다.
+:::
+
+- `mixedCase` (_역: 섞인 경우_) (CapitalizedWords와는 단어 첫 글자가 소문자로 다르다!)
+- `Capitalized_Words_With_Underscores` (못생겼다!)
+
+짧은 고유 접두어를 사용하여 관련 이름을 함께 그룹화하는 스타일도 있다.  
+파이썬에서는 많이 쓰이진 않지만, 글의 완성도를 위해 언급한다.
+예를 들어, `os.stat()` 함수는 전통적으로 `st_mode`, `st_size`, `st_mtime` 등과
+같은 이름을 가진 튜플을 반환한다.  
+(POSIX 시스템 호출 구조의 필드와의 관련성을 강조하여 이에 익숙한 프로그래머들을 돕는다.)
+
+X11 라이브러리는 모든 공용 기능에 첫글자 X를 사용한다.
+이 스타일은 일반적으로 불필요하다고 간주된다.
+왜냐하면 Python에서는 어트리뷰트와 메소드 이름은 오브젝트 명으로 접두어를 붙이고,
+함수의 이름은 모듈 이름으로 접두사를 붙이기 때문이다.
+
+덧붙여, 다음과 같이 선행 또는 후행 밑줄을 사용하는 특수 형식이 알려져있다
+(일반적으로 모든 경우의 컨벤션과 결합 될 수 있다).
+
+- `_single_leading_underscore`: 약한 "내부 사용" 지표.  
+  예시로, `from M import *` 는 이름이 밑줄로 시작하는 개체는 가져오지 않는다.
+
+- `single_trailing_underscore_`: 파이썬 키워드와의 충돌을 피하기 위해 관례로 사용한다. 예시로,
+
+```python
+tkinter.Toplevel(master, class_='ClassName')
+```
+
+- `__double_leading_underscore`: 클래스 어트리뷰트의 이름을 지정할 때, 네임 맹글링을 호출한다.  
+  (class FooBar 내부의 `__boo` 는 `_FooBar__boo` 가 된다. 아래 섹션의 내용 참조)
+
+- `__double_leading_and_trailing_underscore__`: 사용자 제어 네임스페이스에 위치한 "매직"객체(magic object)
+  또는 어트리뷰트. 예시로, `__init__`, `__import__` or `__file__`, 이런 스타일의 이름은 문서에 명시된 것만 사용하자.
 
 ## 규정: 작명 컨벤션
 
@@ -47,9 +96,9 @@ C/C++ 모듈들은 첫글자 밑줄 이름으로 짓는다. (예를 들면 `_soc
 
 ### 클래스 명
 
-클래스 명들은 일반적으로 CapWords[^1] 컨벤션을 따른다.
+클래스 명들은 일반적으로 CapWords[^2] 컨벤션을 따른다.
 
-인터페이스가 문서화되어 있고, 주로 Callable[^2]로 사용되는 경우,
+인터페이스가 문서화되어 있고, 주로 Callable[^3]로 사용되는 경우,
 함수의 작명 컨벤션을 따를 수 있다.
 
 내장 된 클래스들과 컨벤션이 다른 것에 주목하자.
@@ -60,7 +109,7 @@ CapWords 컨벤션은 예외(exception)의 이름이나 내장 상수에만 사�
 
 [PEP484](https://www.python.org/dev/peps/pep-0484/) 에서 소개된 타입 변수의 이름은
 CapWords 를 사용하여 짧게 짓는다. 예를들어, `T`, `AnyStr`, `Num`.
-`_co` 나 `_contra` 접두어를 공변(covariant)과 반변(contravariant)[^3] 행위를
+`_co` 나 `_contra` 접두어를 공변(covariant)과 반변(contravariant)[^4] 행위를
 선언하기 위해 사용할 수 있다. 다음처럼 말이다.
 
 ```python
@@ -84,7 +133,7 @@ KT_contra = TypeVar('KT_contra', contravariant=True)
 `from M import *` 를 사용하기 위해 설계된 모듈들은
 `__all__` 메커니즘을 사용하여 전역변수들을 내보내기 하는 것을 막아야한다.
 또는 밑줄을 접두어로 넣는 오래된 컨벤션을 사용하자.
-(이 전역 변수들이 "module non-public"[^4]임을 나타내고 싶을 수 있을 때)
+(이 전역 변수들이 "module non-public"[^5]임을 나타내고 싶을 수 있을 때)
 
 함수와 변수 명
 
@@ -93,7 +142,7 @@ KT_contra = TypeVar('KT_contra', contravariant=True)
 
 변수 명도 함수 명과 같은 컨벤션을 따른다.
 
-mixedCase[^5] 는 이미 스타일이 존재하는 컨텍스트에만
+mixedCase 는 이미 스타일이 존재하는 컨텍스트에만
 (예를 들면 `threading.py`) 혀용된다.
 이는 이전 버전과의 호환성을 지키기위한 것이다.
 
@@ -249,9 +298,9 @@ Python 은 다음과 같이 이름들을 클래스 명과 함께 맹글한다.
 예를 들면 `os.path` 나 패키지의 `__init__` 모듈 같이
 하위 모듈로부터 기능이 노출된 API 말이다.
 
-[^1]: 대문자. 예: `MyClass`
-[^2]: 호출할 수 있는. 예: `my_class()`
-[^3]: [위키피디아](https://ko.wikipedia.org/wiki/%EB%B2%A1%ED%84%B0%EC%9D%98_%EA%B3%B5%EB%B3%80%EC%84%B1_%EB%B0%8F_%EB%B0%98%EB%B3%80%EC%84%B1)
-[^4]: 모듈을 기준으로 public 이 아닌 것
-[^5]: 대소문자 혼용.
-[^6]: [영문 위키피디아](https://en.wikipedia.org/wiki/Name_mangling#:~:text=mangling%20%2D%20see%20above.-,Python,more%20than%20one%20trailing%20underscore.)
+[^1]: <http://www.wikipedia.com/wiki/CamelCase>  
+[^2]: 대문자. 예: `MyClass`
+[^3]: 호출할 수 있는. 예: `my_class()`
+[^4]: [위키피디아 - 반변성](https://ko.wikipedia.org/wiki/%EB%B2%A1%ED%84%B0%EC%9D%98_%EA%B3%B5%EB%B3%80%EC%84%B1_%EB%B0%8F_%EB%B0%98%EB%B3%80%EC%84%B1)
+[^5]: 모듈을 기준으로 public 이 아닌 것
+[^6]: [영문 위키피디아 - 맹글링](https://en.wikipedia.org/wiki/Name_mangling#:~:text=mangling%20%2D%20see%20above.-,Python,more%20than%20one%20trailing%20underscore.)
