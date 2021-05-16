@@ -332,10 +332,86 @@ def foo():
 
 ## 함수 어노테이션
 
-> [함수 어노테이션](./function-annotations.md) 번역 후 합칠 예정
+[PEP 484](https://www.python.org/dev/peps/pep-0484)
+의 승인으로 함수 어노테이션에 대한 스타일 규칙들이 바뀌고 있다.
+
+- 이전 버전과의 호환성을 만족시키기 위해, Python3 의 함수 어노테이션은
+  가급적 [PEP 484](https://www.python.org/dev/peps/pep-0484) 의 문법을 사용하여야 한다.
+  (앞선 내용에서 어노테이션을 위한 포매팅 권장사항이 몇 가지 있다.)
+
+- 이 PEP에서 이전에 권장되었던 어노테이션 스타일에 대한
+  실험적인 시도들은 더 이상 권장되지 않는다.
+
+- 단, 이제는 표준라이브러리(stdlib)를 제외하고, [PEP 484](https://www.python.org/dev/peps/pep-0484)
+  규칙에 따른 실험적인 시도를 권장한다. 예를 들면, PEP 484 스타일 유형 어노테이션을 사용하는 대규모 서드 파티 라이브러리나 어플리케이션을
+  마크 업 하는 것, 이러한 주석을 추가하는 것이 얼마나 쉬운 지 검토하는 것,
+  그리고 어노테이션의 존재가 코드 이해도를 높이는지 관찰하는 것이 있다.
+
+- Python 표준 라이브러리는 그러한 어노테이션을 적용하는데 있어
+  보수적이어야 하지만, 이러한 어노테이션의 사용은 새로운 코드나 대규모
+  리팩토링에 대해선 허용되어야 한다.
+
+- 함수 어노테이션의 사용에 차이를 두기를 원하는 코드에서, 다음의 형태의 주석을 넣는 것이 권장된다.
+
+```python
+# type: ignore
+```
+
+  파일 상단에 위치한 이것은 타입 체커에게 모든 어노테이션을 무시해야함을 알려준다.
+  (타입 체커들의 불만을 비활성화시키는 더 자세한 방법은 [PEP 484](https://www.python.org/dev/peps/pep-0484)
+  에서 찾을 수 있다.)
+
+- 린터들과 마찬가지로 타입체커는 선택사항이며, 별도의 도구이다.
+  기본적으로 Python 인터프리터는 타입 체킹으로 어떠한 메시지도
+  발행하지 않아야 하며, 어노테이션을 기반으로 행위(behavior)를 변경하지 않아야 한다.
+
+- 타입 체커를 사용하지 않으려는 사용자는 자유롭게 무시해도 된다.
+  하지만, 외부 라이브러리 패키지의 사용자는 해당 패키지의 타입 체커를 실행하길 원할 수도 있다.
+  이를 목적으로, PEP 484 는 스텁(stub) 파일들의 사용을 권장한다.
+  이 스텁 파일은 .pyi 파일로, 이에 상응하는
+  .py 파일들의 설정(preferences)의 타입체커에 의해 읽혀지는 파일이다.
+  스텁 파일은 라이브러리로 배포되거나, 별도로 (라이브러리 작성자의 권한하에)
+  typeshed 저장소를 통해 배포될 수 있다.
+
+- 이전 버전과의 호환이 필요한 코드의 경우, 타입 어노테이션은 주석의 형태로 추가될 수 있다.
+[PEP 484](https://www.python.org/dev/peps/pep-0484/)[^2]의 관련 섹션을 참조.
 
 ## 변수 어노테이션
 
-> [변수 어노테이션](./variable-annotations.md) 번역 후 합칠 예정
+[PEP528](https://www.python.org/dev/peps/pep-0008/#variable-annotations)
+은 변수 어노테이션들을 소개한다. 변수 어노테이션에 대한 권장사항들은 위에서 묘사된 함수 주석과 유사하다.
+
+- 모듈 레벨의 변수, 클래스와 인스턴스 변수, 그리고 로컬 변수 어노테이션은
+  콜론 다음에 한 칸 공백이 있어야한다.
+
+- 콜론 앞에는 공백이 없어야 한다.
+
+- 만약 할당식이 우항을 갖고 있다면,
+  등호 기호는 앞뒤로 정확히 한 칸 공백이 있어야 한다.
+
+```python
+# 올바른 예:
+code: int
+
+class Point:
+    coords: Tuple[int, int]
+    label: str = '<unknown>'
+```
+
+```python
+# 잘못된 예:
+
+code:int  # No space after colon
+code : int  # Space before colon
+
+class Test:
+    result: int=0  # No spaces around equality sign
+```
+
+- [PEP528](https://www.python.org/dev/peps/pep-0008/#variable-annotations)
+  이 Python 3.6 에서 허용된다고 해도, 변수 어노테이션 구문은 모든 버전의 스텁(stub) 파일들에 적합한 구문이다.
+  ([PEP484](https://www.python.org/dev/peps/pep-0484/) 를 참고)
 
 [^1]: [참조 횟수 계산 방식](https://en.wikipedia.org/wiki/Reference_counting)
+[^2]: Python 2.7 및 양립 가능 코드(straddling code)를 위한 문법 제안
+      <https://www.python.org/dev/peps/pep-0484/#suggested-syntax-for-python-2-7-and-straddling-code>
