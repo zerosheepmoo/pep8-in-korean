@@ -18,7 +18,7 @@
 foo = long_function_name(var_one, var_two,
                          var_three, var_four)
 
-# 함수의 아규먼트를 제외한 나머지와 아규먼트를 구분하기 위해 4개 공백(추가적인 들여쓰기)을 더한다.
+# 함수의 아규먼트를 제외한 나머지와 아규먼트를 구분하기 위해 추가적인 들여쓰기를 한다.
 def long_function_name(
         var_one, var_two, var_three,
         var_four):
@@ -35,11 +35,11 @@ foo = long_function_name(
 ```python
 # 잘못된 예:
 
-# 세로줄을 맞추지 않았을 때, 첫번째 문장에 아규먼트는 존재하지 않아야한다.
+# 세로줄을 맞추지 않았을 때, 첫 번째 문장에 아규먼트는 존재하지 않아야 한다.
 foo = long_function_name(var_one, var_two,
     var_three, var_four)
 
-# 들여쓰기가 구별이 되지 않을 때는 추가적인 들여쓰기가 요구된다.
+# 들여쓰기가 구별이 되지 않을 때는 추가적인 들여쓰기가 필요하다.
 def long_function_name(
     var_one, var_two, var_three,
     var_four):
@@ -86,7 +86,7 @@ if (this_is_one_thing
     do_something()
 ```
 
-(또한 이항 연산자들 이전 또는 이후에 띄어쓰기를 할 것인지 안할 것인지에 대한 논의를
+(또한 이항 연산자들 이전 또는 이후에 띄어쓰기를 할 것인지 안 할 것인지에 대한 논의를
 이후의 챕터에서 확인할 수 있다.)
 
 여러 줄이 이어지는 구조에 있는 닫는 괄호들은 다음과 같이 리스트의 마지막 줄에서 공백이 아닌
@@ -103,7 +103,7 @@ result = some_function_that_takes_arguments(
     )
 ```
 
-또는 다음처럼 이어지는 구조가 시작하는 줄의 첫번째 문자 아래로 줄을 맞출 수 있다.
+또는 다음처럼 이어지는 구조가 시작하는 줄의 첫 번째 문자 아래로 줄을 맞출 수 있다.
 
 ```python
 my_list = [
