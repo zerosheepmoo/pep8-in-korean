@@ -371,10 +371,10 @@ def foo():
   이 스텁 파일은 .pyi 파일로, 이에 상응하는
   .py 파일들의 설정(preferences)의 타입체커에 의해 읽혀지는 파일이다.
   스텁 파일은 라이브러리로 배포되거나, 별도로 (라이브러리 작성자의 권한하에)
-  typeshed 저장소를 통해 배포될 수 있다.
+  typeshed 저장소[^2]를 통해 배포될 수 있다.
 
 - 이전 버전과의 호환이 필요한 코드의 경우, 타입 어노테이션은 주석의 형태로 추가될 수 있다.
-[PEP 484](https://www.python.org/dev/peps/pep-0484/)[^2]의 관련 섹션을 참조.
+[PEP 484](https://www.python.org/dev/peps/pep-0484/)[^3]의 관련 섹션을 참조.
 
 ## 변수 어노테이션
 
@@ -413,5 +413,6 @@ class Test:
   ([PEP484](https://www.python.org/dev/peps/pep-0484/) 를 참고)
 
 [^1]: [참조 횟수 계산 방식](https://en.wikipedia.org/wiki/Reference_counting)
-[^2]: Python 2.7 및 양립 가능 코드(straddling code)를 위한 문법 제안
+[^2]: typeshed 저장소 <https://github.com/python/typeshed>
+[^3]: Python 2.7 및 양립 가능 코드(straddling code)를 위한 문법 제안
       <https://www.python.org/dev/peps/pep-0484/#suggested-syntax-for-python-2-7-and-straddling-code>
