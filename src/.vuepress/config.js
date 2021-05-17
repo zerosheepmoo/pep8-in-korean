@@ -84,7 +84,8 @@ module.exports = {
             'hello-zerosheepmoo',
             'hello-xodnr8925',
             'hello-Ohjiwoo-lab',
-            'hello-Sumin0916'
+            'hello-Sumin0916',
+            'hello-hajun_m'
           ]
         }
       ]
