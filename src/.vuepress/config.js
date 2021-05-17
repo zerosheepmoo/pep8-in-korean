@@ -66,7 +66,6 @@ module.exports = {
             'introduction.md',
             'a-foolish-consistency-is-the-hobgoblin-of-little-minds.md',
             'code-lay-out.md',
-            'code-lay-out-rest.md',
             'string-quotes.md',
             'whitespace-in-expressions-and-statements.md',
             'when-to-use-trailing-commas.md',
