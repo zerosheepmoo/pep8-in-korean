@@ -124,7 +124,7 @@ Python 3에서는 들여쓰기에 탭과 스페이스를 혼용하는 것을 허
 
 탭과 스페이스를 혼용하여 들여쓰기 한 Python 2 코드는 오로지 스페이스만을 사용하는 것으로 바꿔야 한다.
 
-`-t` 옵션과 함께 Python 2 명령어 인터프리터(command line interpreter)를 호출(invoke) 하면
+`-t` 옵션과 함께 Python 2 명령 줄 인터프리터(command line interpreter)를 호출(invoke) 하면
 탭과 스페이스가 잘못 혼용된 코드에 대해 경고한다.
 `-tt` 옵션을 사용할 때는 경고대신 에러가 발생한다.
 이 옵션들을 매우 권장한다!
