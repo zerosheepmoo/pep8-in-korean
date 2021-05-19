@@ -390,7 +390,7 @@ def foo():
   등호 기호는 앞뒤로 정확히 한 칸 공백이 있어야 한다.
 
 ```python
-# 올바른 예:
+# 옳은 예:
 code: int
 
 class Point:
