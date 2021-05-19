@@ -16,6 +16,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     themeConfig: {
         repo: 'zerosheepmoo/pep8-in-korean',
         editLink: false,
+        contributors: false,
         navbar: [
             {
                 text: 'Guide',
