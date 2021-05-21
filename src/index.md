@@ -17,5 +17,5 @@ features:
     details: 불필요한 단어나 미사여구는 최대한 피하면서, 원본 그대로의 직역을 의미전달을 해치지 않는 선에서 유지하였습니다.
   - title: 열려있는!
     details: 이 번역 프로젝트는 누구나 참여할 수 있는 오픈소스 프로젝트입니다. 자세한 내용은 우측 상단 깃허브 레포지토리에 방문 바랍니다.
-footer: MIT Licensed | Copyright © 2021 Made by codecampstudyteam with ❤️
+footer: MIT Licensed | Copyright © 2021 Made by PEP8kotra team with ❤️
 ---
