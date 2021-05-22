@@ -13,3 +13,8 @@
 
 - discussion 탭을 열어 자유롭게 작성해주세요.
 - 프로젝트와 관련된 각종 제안, 질문들은 언제나 환영입니다.
+
+## 문서사이트 방문하기
+
+- 옆에 envrionment - github pages - view deployments (recent) 하시거나
+- [문서사이트 바로가기](https://zerosheepmoo.github.io/pep8-in-korean/)로 방문하기!
