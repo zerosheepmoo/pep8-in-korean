@@ -182,8 +182,8 @@ with open('/path/to/some/file/you/want/to/read') as file_1, \
 우리의 눈이 더 열심히 일해야 하는 예시가 있다.
 
 ```python
-## 잘못된 예
-## 연산자가 대응되는 피연산자로부터 멀리 떨어져 있다.
+# 잘못된 예
+# 연산자가 대응되는 피연산자로부터 멀리 떨어져 있다.
 income = (gross_wages +
           taxable_interest +
           (dividends - qualified_dividends) -
@@ -229,7 +229,7 @@ Python 코드에선, 컨벤션이 국지적으로 일관성이 있는 한
 논리적인 섹션을 나타내기 위해 함수 내에서 공백 줄을 꼭 필요한 경우에만 사용하자.
 
 Python 은 컨트롤 + L (^L) 폼 피드(form feed) 문자를 공백으로 받아들인다.
-많은 툴들이 문자를 페이지 구분자로 취급한다. 그래서 이를 파일 내 서로 관련된 섹션들의 페이지를
+많은 툴들이 이 문자를 페이지 구분자로 취급한다. 그래서 이를 파일 내 서로 관련된 섹션들의 페이지를
 분리하기 위해 사용할 수 있다.
 몇 에디터와 웹 기반 코드 뷰어에서는 컨트롤 + L 이 폼 피드로 인식되지 않을 수 있다는 점을 주의하자.
 그리고 그 위치에 다른 글리프를 보여줄 것이다.
@@ -265,23 +265,23 @@ Python 표준 라이브러리 내의 모든 식별자들은 반.드.시. 아스�
 
 - 가져오기(Imports)는 분리된 줄에 사용해야 한다.
 
-```python
-    ## 옳은 예
-    import os
-    import sys
-```
+  ```python
+  # 옳은 예
+  import os
+  import sys
+  ```
 
-```python
-    ## 잘못된 예
-    import sys, os
-```
+  ```python
+  # 잘못된 예
+  import sys, os
+  ```
 
-이것도 괜찮다.
+  이것도 괜찮다.
 
-```python
-    ## 옳은 예
-    from subprocess import Popen, PIPE
-```
+  ```python
+  # 옳은 예
+  from subprocess import Popen, PIPE
+  ```
 
 - 가져오기는 항상 파일의 맨 위에 놓여져 있다.
   모듈 주석과 독스트링 바로 다음, 그리고 모듈 전역들과 상수들 전에 말이다.
@@ -294,25 +294,25 @@ Python 표준 라이브러리 내의 모든 식별자들은 반.드.시. 아스�
 
   각 가져오기 모음 사이에 공백 줄을 넣어야한다.
 
-- 절대 경로 가져오기가 권장된다. 가져오기 체계가 잘못 구성
-- (예를 들면, 패키지 내부의 디렉토리가 `sys.path` 에서 끝나는 경우) 된다면,
-  더 가독성있으며 더 나은 행위를 하는 경향이 있다.
-  (또는, 최소한, 더 나은 에러 메시지를 준다던가)
+- 절대 경로 가져오기가 권장된다. 대체적으로 이 편이 가독성이 좋다.
+  가져오기 체계가 잘못 구성 되었을 때도(예를 들어, 패키지 내부의 디렉토리가 `sys.path` 에서 끝나는 경우),
+  더 나은 행위를 하는 경향이 있다.
+  (그게 아니더라도, 최소한 더 나은 에러 메시지를 준다.)
 
-```python
-import mypkg.sibling
-from mypkg import sibling
-from mypkg.sibling import example
-```
+  ```python
+  import mypkg.sibling
+  from mypkg import sibling
+  from mypkg.sibling import example
+  ```
 
   하지만, 명시적 상대경로 가져오기는 절대경로 가져오기의 허용 가능한 대안이다.
   특히, 불필요하게 장황하고 복잡한 패키지 레이아웃을 처리할 땐,
   절대경로 가져오기를 사용하는 것보다 나을 수 있다.
 
-```python
-from . import sibling
-from .sibling import example
-```
+  ```python
+  from . import sibling
+  from .sibling import example
+  ```
 
   표준 라이브러리 코드는 복잡한 패키지 레이아웃을 피하고,
   항상 절대경로 가져오기를 사용해야한다.
@@ -323,17 +323,17 @@ from .sibling import example
 - 클래스를 갖고 있는 모듈에서 클래스를 가져올 때, 다음과 같이
   철자를 바꾸는 것은 괜찮다.
 
-```python
-from myclass import MyClass
-from foo.bar.yourclass import YourClass
-```
+  ```python
+  from myclass import MyClass
+  from foo.bar.yourclass import YourClass
+  ```
 
-만약 이 철자가 로컬 이름과 충돌이 발생하면, 명시적으로 철자를 바꾸자.
-
-```python
-import myclass
-import foo.bar.yourclass
-```
+  만약 이 철자가 로컬 이름과 충돌이 발생하면, 명시적으로 철자를 바꾸자.
+  
+  ```python
+  import myclass
+  import foo.bar.yourclass
+  ```
 
   그리고 "myclass.MyClass"와 "foo.bar.yourclass.YourClass"를 사용하자.
 
