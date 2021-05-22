@@ -63,7 +63,8 @@ tkinter.Toplevel(master, class_='ClassName')
   (class FooBar 내부의 `__boo` 는 `_FooBar__boo` 가 된다. 아래 섹션의 내용 참조)
 
 - `__double_leading_and_trailing_underscore__`: 사용자 제어 네임스페이스에 있는 "매직" 객체(magic object)
-  또는 어트리뷰트(magic attribute). 예시로, `__init__`, `__import__` or `__file__`, 이런 스타일의 이름은 문서에 명시된 것만 사용하자.
+  또는 어트리뷰트(magic attribute). 예시로, `__init__`, `__import__` or `__file__`,
+  이런 스타일의 이름은 문서에 명시된 것만 사용하자.
 
 ## 규정: 작명 컨벤션
 
