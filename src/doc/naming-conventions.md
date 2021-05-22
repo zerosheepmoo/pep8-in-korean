@@ -62,7 +62,7 @@ tkinter.Toplevel(master, class_='ClassName')
 - `__double_leading_underscore`: 클래스 어트리뷰트의 이름을 지정할 때, 네임 맹글링을 호출한다.  
   (class FooBar 내부의 `__boo` 는 `_FooBar__boo` 가 된다. 아래 섹션의 내용 참조)
 
-- `__double_leading_and_trailing_underscore__`: 사용자 제어 네임스페이스에 위치한 "매직"객체(magic object)
+- `__double_leading_and_trailing_underscore__`: 사용자 제어 네임스페이스에 있는 "매직"객체(magic object)
   또는 어트리뷰트. 예시로, `__init__`, `__import__` or `__file__`, 이런 스타일의 이름은 문서에 명시된 것만 사용하자.
 
 ## 규정: 작명 컨벤션
@@ -250,7 +250,7 @@ Python 은 다음과 같이 이름들을 클래스 명과 함께 맹글한다.
   그리고 하위 클래스에서 사용하지 않으려는 어트리뷰트가 있는 경우
   두개의 밑줄로 시작하여 후행 밑줄이 없는 작명법을 고려하자.
   이는 Python 의 이름 맹글링 알고리즘을 불러일으킨다.
-  어트리뷰트가 위치한 클래스의 이름 또한 어트리뷰트 명으로 맹글된다.
+  해당 어트리뷰트가 있는 클래스의 이름 또한 어트리뷰트 명으로 맹글된다.
   이는 하위클래스에 예기치 않게 같은 이름의 어트리뷰트가 포함된 경우
   어트리뷰트 명 충돌을 방지하는데 도움이 된다.
 
